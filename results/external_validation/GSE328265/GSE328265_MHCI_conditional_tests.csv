@@ -1,0 +1,3 @@
+predictor,conditioned_on,target,n_subjects,partial_correlation,permutation_p,fdr_bh
+cDC2,classical_monocyte,BAM_stable_core,14,0.5266397828804469,0.09269907300926991,0.18539814601853982
+classical_monocyte,cDC2,BAM_stable_core,14,0.14080188208643926,0.6559734402655973,0.6559734402655973

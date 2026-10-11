@@ -1,0 +1,76 @@
+dataset,subject_id,group,continuous_decoupling_index,validation_role
+GSE138266,MS19270,MS,0.1514648202239471,discovery cohort
+GSE138266,MS49131,MS,0.2646362940283152,discovery cohort
+GSE138266,MS58637,MS,0.1183054677884492,discovery cohort
+GSE138266,MS60249,MS,0.2949879041357146,discovery cohort
+GSE138266,MS71658,MS,0.1034398564808644,discovery cohort
+GSE138266,MS74594,MS,-0.0001542660779688,discovery cohort
+GSE138266,PST83775,Control,0.0556461588055336,discovery cohort
+GSE138266,PST95809,Control,0.1350077316683199,discovery cohort
+GSE138266,PTC32190,Control,-0.0073492491272099,discovery cohort
+GSE138266,PTC41540,Control,0.0455162487864626,discovery cohort
+GSE138266,PTC45044,Control,0.0579700077840579,discovery cohort
+GSE138266,PTC85037,Control,0.0255336016337123,discovery cohort
+GSE286068,CSF_scRNA1,MS,0.1701529260598254,discovery cohort
+GSE286068,CSF_scRNA2,Control,0.1655574052944729,discovery cohort
+GSE286068,CSF_scRNA3,MS,0.1082742016432019,discovery cohort
+GSE286068,CSF_scRNA4,MS,0.1396327721348046,discovery cohort
+GSE286068,CSF_scRNA5,MS,0.1986555635879445,discovery cohort
+GSE286068,CSF_scRNA6,MS,0.692925050877644,discovery cohort
+GSE286068,CSF_scRNA7,Control,0.0191025192646052,discovery cohort
+GSE286068,CSF_scRNA8,Control,0.0380519642966923,discovery cohort
+GSE286068,CSF_scRNA9,MS,0.1993796407403401,discovery cohort
+GSE286068,CSF_scRNA10,Control,0.1109551965045805,discovery cohort
+GSE286068,CSF_scRNA11,MS,0.2759952144058636,discovery cohort
+GSE286068,CSF_scRNA12,MS,0.2666097764176057,discovery cohort
+GSE286068,CSF_scRNA13,MS,0.1522179888706367,discovery cohort
+GSE286068,CSF_scRNA14,Control,0.0697069023409308,discovery cohort
+GSE286068,CSF_scRNA15,MS,0.2204508163942505,discovery cohort
+"GSE328265
+new-only frozen projection",Ctrl_1,Control,0.2159092851053292,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",Ctrl_3,Control,0.0670791083861583,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",Ctrl_5,Control,0.2960542521295727,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",Ctrl_6,Control,0.1251393962187191,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",Ctrl_9,Control,-0.015041455288026,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",Ctrl_10,Control,0.2735940560779479,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",PPMS_1,MS,0.0568007041940252,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",PPMS_3,MS,0.2286461524475282,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",PPMS_6,MS,0.5115883928545972,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_1,MS,0.2686307745615145,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_2,MS,0.5942883877974154,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_3,MS,0.5733393566493739,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_4,MS,0.1049112259533057,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_5,MS,-0.009354766718411,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_6,MS,0.0299625382362444,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_7,MS,0.5204455427673473,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",RRMS_9,MS,0.1736200374305301,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_1,MS,0.2432131444126282,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_2,MS,0.1389473221620497,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_3,MS,0.3774787912596066,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_4,MS,0.8002994146339855,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_5,MS,0.1985459433056866,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_6,MS,0.134463145838989,newly sequenced subjects only; frozen projection without refitting
+"GSE328265
+new-only frozen projection",SPMS_7,MS,0.2238003595835474,newly sequenced subjects only; frozen projection without refitting

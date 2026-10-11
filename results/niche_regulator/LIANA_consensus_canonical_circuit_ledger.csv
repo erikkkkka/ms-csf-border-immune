@@ -1,0 +1,6 @@
+circuit,ligand_components,receptor_components,candidate_regulators,liana_resource,liana_ligand_key,liana_receptor_key,exact_pair_in_liana_consensus
+CSF2,CSF2,CSF2RA;CSF2RB,STAT5A;STAT5B;STAT3;IRF1;NFKB1;RELA,consensus,CSF2,CSF2RA_CSF2RB,True
+IFNG,IFNG,IFNGR1;IFNGR2,STAT1;IRF1,consensus,IFNG,IFNGR1_IFNGR2,True
+TNF,TNF,TNFRSF1A;TNFRSF1B,NFKB1;NFKB2;RELA;RELB;CEBPB,consensus,TNF,TNFRSF1A,True
+LTA_LTB,LTA;LTB,LTBR,NFKB2;RELB,consensus,LTA_LTB,LTBR,True
+CCL5,CCL5,CCR1;CCR5,NFKB1;RELA;CEBPB,consensus,CCL5,CCR1,True

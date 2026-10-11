@@ -1,0 +1,21 @@
+{
+  "dataset": "GSE328265",
+  "n_cells": 1952,
+  "n_donors": 22,
+  "n_genes": 1145,
+  "n_base_grn_targets": 808,
+  "n_base_grn_edges": 4441,
+  "n_active_regulators": 215,
+  "knn_k": 44,
+  "n_pcs": 50,
+  "ridge_alpha": 10.0,
+  "celloracle_version": "0.20.0",
+  "random_seed": 12345,
+  "n_target_shuffled_GRNs": 50,
+  "cap_per_donor_state": 150,
+  "state_counts": {
+    "other_incomplete": 831,
+    "decoupled": 644,
+    "terminal": 477
+  }
+}

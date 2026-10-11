@@ -1,0 +1,2 @@
+n_cells,n_subjects,n_root,n_terminal,state_order_spearman,terminal_vs_root_auc,terminal_score_cutpoint_from_discovery
+3333,30,372,1194,0.5949148474253424,0.9982686731146774,0.4258517034068136

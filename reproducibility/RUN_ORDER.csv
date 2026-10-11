@@ -1,0 +1,43 @@
+order,step,stage,runtime,script,arguments,random_seed
+1,continuum,analysis,main,scripts/51_build_monocyte_bam_continuum.py,--root '.',12345
+2,trajectory_prepare,analysis,main,scripts/52_consensus_trajectory.py,--root '.' --stage prepare,deterministic/no stochastic operation
+3,slingshot,analysis,r,scripts/52_slingshot_trajectory.R,'.',deterministic/no stochastic operation
+4,trajectory_finalize,analysis,main,scripts/52_consensus_trajectory.py,--root '.' --stage finalize,deterministic/no stochastic operation
+5,trajectory_jackknife,analysis,main,scripts/52b_trajectory_donor_jackknife.py,--root '.',12345
+6,two_axis_model,analysis,main,scripts/53_two_axis_donor_model.py,--root '.',deterministic/no stochastic operation
+7,threshold_sensitivity,analysis,main,scripts/53b_decoupling_threshold_sensitivity.py,--root '.',deterministic/no stochastic operation
+8,external_projection,analysis,main,scripts/54_project_gse328265_two_axis.py,--root '.',12345
+9,cross_species_lam,analysis,main,scripts/55_cross_species_lam_projection.py,--root '.',12345
+10,niche_regulators,analysis,main,scripts/56_niche_regulator_inference.py,--root '.',12345
+11,celloracle_prepare,analysis,main,scripts/57_prepare_celloracle_compatible_inputs.py,--root '.',deterministic/no stochastic operation
+12,celloracle_single_GSE138266,analysis,celloracle,scripts/57_run_celloracle_directional_perturbation.py,--root '.' --dataset GSE138266,12345; shuffled GRNs 12346-12395
+13,celloracle_single_GSE286068,analysis,celloracle,scripts/57_run_celloracle_directional_perturbation.py,--root '.' --dataset GSE286068,12345; shuffled GRNs 12346-12395
+14,celloracle_single_GSE328265,analysis,celloracle,scripts/57_run_celloracle_directional_perturbation.py,--root '.' --dataset GSE328265,12345; shuffled GRNs 12346-12395
+15,celloracle_single_summary,analysis,main,scripts/58_summarize_celloracle_directional_perturbation.py,--root '.',12345
+16,celloracle_combo_GSE138266,analysis,celloracle,scripts/59_run_celloracle_compensatory_combinations.py,--root '.' --dataset GSE138266,12345; shuffled GRNs 12346-12395
+17,celloracle_combo_GSE286068,analysis,celloracle,scripts/59_run_celloracle_compensatory_combinations.py,--root '.' --dataset GSE286068,12345; shuffled GRNs 12346-12395
+18,celloracle_combo_GSE328265,analysis,celloracle,scripts/59_run_celloracle_compensatory_combinations.py,--root '.' --dataset GSE328265,12345; shuffled GRNs 12346-12395
+19,celloracle_combo_summary,analysis,main,scripts/60_summarize_celloracle_compensatory_combinations.py,--root '.',12345
+20,drug_signatures,analysis,main,scripts/61_build_transition_aware_drug_signatures.py,--root '.',deterministic/no stochastic operation
+21,directional_drug_screen,analysis,main,scripts/62_transition_aware_directional_drug_screen.py,--root '.',deterministic/no stochastic operation
+22,targeted_nibr_screen,analysis,main,scripts/63_targeted_nibr_transition_aware_screen.py,--root '.',"20260813; 20,000 permutations"
+23,genetic_deconvolution,analysis,main,scripts/64_genetic_target_deconvolution.py,--root '.',20260813 + gene-set size
+24,prepare_3rwp,analysis,docking,scripts/65_prepare_3rwp_pdpk1_redocking.py,--root '.',deterministic/no stochastic operation
+25,redock_3rwp,analysis,docking,scripts/66_run_3rwp_pdpk1_redocking.py,--root '.',20260813
+26,dock_bx912_3rwp,analysis,docking,scripts/67_dock_bx912_to_pdpk1.py,--root '.',20260813
+27,prepare_1z5m,analysis,docking,scripts/68_prepare_1z5m_pdpk1_redocking.py,--root '.',deterministic/no stochastic operation
+28,redock_1z5m,analysis,docking,scripts/69_run_1z5m_pdpk1_redocking.py,--root '.',20260813
+29,dock_bx912_1z5m,analysis,docking,scripts/70_dock_bx912_to_validated_pdpk1.py,--root '.',20260813
+30,docking_robustness,analysis,docking,scripts/71_pdpk1_bx912_pose_robustness.py,--root '.',20260813;20260817;20260823;20260829;20260831
+31,nibr_transcriptomic_neighbors,analysis,main,scripts/72_nibr_bx912_transcriptomic_neighbors.py,--root '.',deterministic/no stochastic operation
+32,nibr_gmt_neighbors,analysis,main,scripts/73_nibr_bx912_gmt_neighbors.py,--root '.',deterministic/no stochastic operation
+33,in_vivo_crispr_bridge,analysis,main,scripts/79_bridge_in_vivo_crispr_signatures.py,--root '.',20260902
+34,main_figures,assets,main,scripts/75_generate_manuscript_figures.py,--root '.',20260821 + plotted n (jitter only)
+35,main_figure_qa,assets,main,scripts/76_qa_manuscript_figures.py,--root '.',deterministic/no stochastic operation
+36,figure1c_annotation_audit,assets,main,scripts/77_audit_figure1c_annotation.py,--root '.',12345
+37,all_figure_annotation_audit,assets,main,scripts/78_audit_figure_annotations.py,--root '.',deterministic/no stochastic operation
+38,extended_data_figures,assets,main,scripts/80_generate_extended_data_figures.py,--root '.',20260903 + plotted n (jitter only)
+39,extended_data_qa,assets,main,scripts/81_qa_extended_data_figures.py,--root '.',deterministic/no stochastic operation
+40,supplementary_tables,assets,main,scripts/82_build_supplementary_tables.py,--root '.',deterministic/no stochastic operation
+41,supplementary_table_qa,assets,main,scripts/83_qa_supplementary_tables.py,--root '.',deterministic/no stochastic operation
+42,statistical_audit,assets,main,scripts/88_statistical_validation.py,--root '.',20260903

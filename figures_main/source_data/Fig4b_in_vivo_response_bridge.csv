@@ -1,0 +1,33 @@
+signature_type,perturbation,endpoint,n_cohorts,n_donors,n_positive_cohorts,direction_concordant,mean_cohort_effect,mean_standardized_effect,combined_z,stouffer_p,expected_sign,n_expected_direction_cohorts,fdr_bh_within_signature_endpoint,fdr_bh_global_primary,perturbation_display,endpoint_display,signature_scope,endpoint_gene_holdout
+published_response,Csf2ra,axis2_spearman,3,43,1,False,-0.0334536645317101,-0.2151061827839402,-1.7283770062013744,0.0839206551582733,1.0,1.0,0.1118942068776978,0.1678413103165467,CSF2RA,Axis 2,author-defined in vivo cytokine-response signature,True
+published_response,Csf2ra,decoupled_minus_other_incomplete,3,32,1,False,-0.0770390508536714,-0.1329739191478206,-1.3932173880832497,0.1635540632147846,1.0,1.0,0.2180720842863794,0.2516216357150532,CSF2RA,"Decoupled
+response",author-defined in vivo cytokine-response signature,True
+published_response,Csf2ra,lam2_residual_spearman,4,60,2,False,0.0258694880870061,0.1567812451700355,1.163898676154462,0.2444650761651075,,,0.2444650761651075,0.32595343488681,CSF2RA,"LAM2
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Csf2ra,precursor_residual_spearman,4,60,4,True,0.040571947455896,0.366698071314458,2.532527711939841,0.0113243418099353,,,0.0226486836198707,0.0283108545248384,CSF2RA,"Precursor
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Csf2ra,pseudotime_spearman,4,60,2,False,0.0020405775369676,0.1664243198385411,0.4423496556465083,0.6582362037339519,,,0.6582362037339519,0.6928802144567915,CSF2RA,Differentiation,author-defined in vivo cytokine-response signature,True
+published_response,Ifngr1,axis2_spearman,3,43,3,True,0.138242075354472,1.7236280082621367,5.7001093979611515,1.1973056808303714e-08,1.0,3.0,4.7892227233214864e-08,2.3946113616607425e-07,IFNGR1,Axis 2,author-defined in vivo cytokine-response signature,True
+published_response,Ifngr1,decoupled_minus_other_incomplete,3,32,3,True,0.3645984741264421,1.132351301590791,4.193120114546693,2.7514366041621223e-05,1.0,3.0,0.0001100574641664,0.0001375718302081,IFNGR1,"Decoupled
+response",author-defined in vivo cytokine-response signature,True
+published_response,Ifngr1,lam2_residual_spearman,4,60,4,True,0.0789268629243082,0.7174065348734368,4.378097580937857,1.1971974909142286e-05,,,4.788789963656914e-05,7.981316606094858e-05,IFNGR1,"LAM2
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Ifngr1,precursor_residual_spearman,4,60,2,False,0.0130023274452741,0.0564177546439467,-0.5061651528478761,0.6127407157595764,,,0.655625821709622,0.6928802144567915,IFNGR1,"Precursor
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Ifngr1,pseudotime_spearman,4,60,3,False,0.0146438697019219,0.366084778353827,2.908849494531906,0.003627614528145,,,0.0072552290562901,0.0120920484271501,IFNGR1,Differentiation,author-defined in vivo cytokine-response signature,True
+published_response,Tgfbr1,axis2_spearman,3,43,0,True,-0.0768119100170968,-0.9186477066951844,-2.7140765114881105,0.0066460814408305,1.0,0.0,0.013292162881661,0.0189888041166586,TGFBR1,Axis 2,author-defined in vivo cytokine-response signature,True
+published_response,Tgfbr1,decoupled_minus_other_incomplete,3,32,1,False,-0.130824311533881,-0.5520713307074994,-1.5443094560600772,0.122513382873895,1.0,1.0,0.2180720842863794,0.2041889714564917,TGFBR1,"Decoupled
+response",author-defined in vivo cytokine-response signature,True
+published_response,Tgfbr1,lam2_residual_spearman,4,60,4,True,0.052094402267325,0.4156247038140106,2.3191398789777984,0.0203874530647901,,,0.0407749061295802,0.0453054512550891,TGFBR1,"LAM2
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Tgfbr1,precursor_residual_spearman,4,60,2,False,-0.00809767991681,-0.121410539036159,-0.4459604407259532,0.655625821709622,,,0.655625821709622,0.6928802144567915,TGFBR1,"Precursor
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Tgfbr1,pseudotime_spearman,4,60,3,False,0.1341622349502856,1.183617191620168,3.640548575957136,0.0002720577721256,,,0.0010882310885025,0.0010882310885025,TGFBR1,Differentiation,author-defined in vivo cytokine-response signature,True
+published_response,Tnfrsf1a,axis2_spearman,3,43,1,False,-0.0251423199921673,-0.2007723744597197,-1.2426315173016955,0.2140036502644176,1.0,1.0,0.2140036502644176,0.3057195003777394,TNFR1,Axis 2,author-defined in vivo cytokine-response signature,True
+published_response,Tnfrsf1a,decoupled_minus_other_incomplete,3,32,1,False,-0.0614367564363551,-0.1189439451955955,0.083151673563616,0.9337309385094428,1.0,1.0,0.9337309385094428,0.9337309385094428,TNFR1,"Decoupled
+response",author-defined in vivo cytokine-response signature,True
+published_response,Tnfrsf1a,lam2_residual_spearman,4,60,2,False,-0.0566267433583088,-0.4453030747410751,-1.6267113720410733,0.1037984123581853,,,0.138397883144247,0.1887243861057914,TNFR1,"LAM2
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Tnfrsf1a,precursor_residual_spearman,4,60,4,True,0.1250368907354258,0.8890819026997322,4.645882246192431,3.386261279628498e-06,,,1.3545045118513992e-05,3.386261279628498e-05,TNFR1,"Precursor
+residual",author-defined in vivo cytokine-response signature,True
+published_response,Tnfrsf1a,pseudotime_spearman,4,60,2,False,0.0097266016463518,0.1149338086451007,0.9405830677129012,0.3469185623775865,,,0.4625580831701154,0.4336482029719832,TNFR1,Differentiation,author-defined in vivo cytokine-response signature,True

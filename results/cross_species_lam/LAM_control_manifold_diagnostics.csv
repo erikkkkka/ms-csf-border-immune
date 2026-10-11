@@ -1,0 +1,17 @@
+dataset,signature,reference_kind,n_reference_cells,n_reference_subjects,baseline_r_squared
+GSE138266,author_human_LAM,control_cells,1938,6,0.35663789296651627
+GSE138266,mouse_LAM2_complement_APC,control_cells,1938,6,0.42225092592749536
+GSE138266,mouse_LAM4_fibrotic,control_cells,1938,6,0.32417969705510086
+GSE138266,mouse_GMCSF_LAM_precursor,control_cells,1938,6,0.05026154363489721
+GSE194078,author_human_LAM,all_cells_for_trajectory_only,3493,11,0.5755177400714744
+GSE194078,mouse_LAM2_complement_APC,all_cells_for_trajectory_only,3493,11,0.6535650570772789
+GSE194078,mouse_LAM4_fibrotic,all_cells_for_trajectory_only,3493,11,0.44758061400318694
+GSE194078,mouse_GMCSF_LAM_precursor,all_cells_for_trajectory_only,3493,11,0.06831640831527097
+GSE286068,author_human_LAM,control_cells,355,5,0.691632246394247
+GSE286068,mouse_LAM2_complement_APC,control_cells,355,5,0.5190776922220344
+GSE286068,mouse_LAM4_fibrotic,control_cells,355,5,0.3881497283901182
+GSE286068,mouse_GMCSF_LAM_precursor,control_cells,355,5,0.1752900130965983
+GSE328265,author_human_LAM,control_cells,723,8,0.48033663409636695
+GSE328265,mouse_LAM2_complement_APC,control_cells,723,8,0.6665805381390427
+GSE328265,mouse_LAM4_fibrotic,control_cells,723,8,0.33386240905752906
+GSE328265,mouse_GMCSF_LAM_precursor,control_cells,723,8,0.03304175886846372

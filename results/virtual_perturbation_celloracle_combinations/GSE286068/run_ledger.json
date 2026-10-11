@@ -1,0 +1,35 @@
+{
+  "dataset": "GSE286068",
+  "n_cells": 1222,
+  "n_donors": 10,
+  "n_genes": 1144,
+  "n_base_grn_targets": 853,
+  "n_base_grn_edges": 4841,
+  "n_active_regulators": 225,
+  "knn_k": 35,
+  "n_pcs": 50,
+  "ridge_alpha": 10.0,
+  "celloracle_version": "0.20.0",
+  "random_seed": 12345,
+  "n_target_shuffled_GRNs": 50,
+  "cap_per_donor_state": 150,
+  "interventions": {
+    "STAT1_KO__PPARG_OE": {
+      "STAT1": "KO",
+      "PPARG": "OE"
+    },
+    "STAT1_KO__MAF_OE": {
+      "STAT1": "KO",
+      "MAF": "OE"
+    },
+    "STAT1_KO__MAFB_OE": {
+      "STAT1": "KO",
+      "MAFB": "OE"
+    },
+    "STAT1_KO__PPARG_OE__MAFB_OE": {
+      "STAT1": "KO",
+      "PPARG": "OE",
+      "MAFB": "OE"
+    }
+  }
+}

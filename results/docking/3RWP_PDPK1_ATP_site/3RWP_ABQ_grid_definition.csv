@@ -1,0 +1,2 @@
+pdb_id,target,ligand,chain,residue_number,n_heavy_atoms,center_x,center_y,center_z,size_x,size_y,size_z,padding_each_side_A,structure_resolution_A,phosphoserine_241_retained,site_type
+3RWP,human_PDPK1,ABQ,A,360,34,37.12902941176471,26.96229411764706,28.081029411764707,22.741,18.821,19.124,6.0,1.92,True,ATP_competitive_kinase_site

@@ -1,0 +1,5 @@
+dataset,analysis_role,disease_contrast_included,external_new_subjects_only
+GSE138266,paired CSF-PBMC trajectory and disease discovery,true,false
+GSE194078,independent paired trajectory replication; inflammatory non-MS donors excluded from disease contrasts,false,false
+GSE286068,CSF trajectory and disease discovery,true,false
+GSE328265,external projection of newly sequenced GSE327243-GSE328264 subjects,true,true

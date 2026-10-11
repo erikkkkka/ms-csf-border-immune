@@ -1,0 +1,7 @@
+endpoint,cohort,n_case,n_control,effect,standardized_effect,p_value,source
+continuous_decoupling_index,GSE138266,6,5,0.0980884998464541,1.111696233922438,0.1082251082251082,discovery
+continuous_decoupling_index,GSE286068,9,5,0.1641966618750621,1.1066986800910017,0.0369630369630369,discovery
+continuous_decoupling_index,GSE328265_new_only,18,6,0.12674569663782562,0.6119969232362341,0.2102378976210238,external_projection
+decoupled_inflammatory_fraction,GSE138266,6,5,0.1390132233777301,1.4555134632795776,0.0519480519480519,discovery
+decoupled_inflammatory_fraction,GSE286068,9,5,0.1217336210142755,1.1136136405309964,0.0559440559440559,discovery
+decoupled_inflammatory_fraction,GSE328265_new_only,18,6,0.07455304205861374,0.49350833470084277,0.3044269557304427,external_projection

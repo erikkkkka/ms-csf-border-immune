@@ -1,0 +1,3 @@
+control_n_cells,control_n_subjects,control_r_squared,control_residual_center,control_residual_sd,module
+723,8,0.15190159010115767,-0.058504972148854195,0.3698586524193941,MHC_I
+723,8,0.06590507593527306,-0.14999340716717796,0.45275657610213565,IFN

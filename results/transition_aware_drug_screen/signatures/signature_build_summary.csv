@@ -1,0 +1,2 @@
+n_cohorts,n_eligible_donor_pairs,n_common_genes,n_direction_concordant,n_held_out_endpoint_genes,n_lock_high,n_lock_low,n_axis2,n_lam2,n_trajectory_positive,n_trajectory_negative,primary_selection_rule
+3,32,20751,3483,106,150,150,16,11,40,40,direction concordant across three MS CSF cohorts; endpoint genes held out; top 150 per direction by weighted Stouffer meta-z

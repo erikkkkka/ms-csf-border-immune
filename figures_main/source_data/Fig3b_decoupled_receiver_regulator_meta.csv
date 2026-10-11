@@ -1,0 +1,10 @@
+contrast,feature_type,feature_name,n_cohorts,n_donors,direction_concordant,mean_standardized_effect,combined_z,stouffer_p,fdr_bh_within_contrast,display_label,molecular_layer
+decoupled_minus_other_incomplete,receptor,IFNG,3,46,True,0.4311961362323549,2.912456279761465,0.003585983959562,0.0250060442551849,IFNGR1/2,receiver receptor-complex expression
+decoupled_minus_other_incomplete,receptor,TNF,3,46,True,0.5738496558303233,3.4590265227242853,0.0005421315170032,0.0058279138077844,TNFRSF1A/B,receiver receptor-complex expression
+decoupled_minus_other_incomplete,receptor,CSF2,3,46,False,0.0150230182875163,-0.0637407352611425,0.9491766686295297,0.971776113120709,CSF2RA/B,receiver receptor-complex expression
+decoupled_minus_other_incomplete,activity,IRF1,3,46,True,1.1960714261128669,4.600309014057547,4.218646525703275e-06,9.07009003026204e-05,IRF1,regulator activity
+decoupled_minus_other_incomplete,activity,STAT1,3,46,True,0.9117798972654928,4.383488572010611,1.1679377836158444e-05,0.0001674044156516,STAT1,regulator activity
+decoupled_minus_other_incomplete,activity,NFKB1,3,46,True,0.3606987403767608,2.0639072949667088,0.0390265069545981,0.1525581635497928,NFKB1,regulator activity
+decoupled_minus_other_incomplete,activity,PPARG,3,46,False,-0.2581218546603497,-1.0212757276932187,0.3071238227887956,0.5741880165181831,PPARG,regulator activity
+decoupled_minus_other_incomplete,activity,MAF,3,46,True,-0.407393594393875,-2.0946250491603644,0.0362043366799864,0.1525581635497928,MAF,regulator activity
+decoupled_minus_other_incomplete,activity,NR1H3,3,46,False,-0.1264344073521996,-1.3680160100084382,0.1713070647855736,0.409233543654426,NR1H3,regulator activity

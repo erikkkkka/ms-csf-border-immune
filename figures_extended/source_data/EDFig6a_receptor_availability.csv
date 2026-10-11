@@ -1,0 +1,21 @@
+dataset,circuit,requested_receptors,available_receptors,all_components_available,availability_fraction,evidence_scope
+GSE138266,CSF2,CSF2RA;CSF2RB,CSF2RA;CSF2RB,True,1.0,receiver-component expression availability
+GSE138266,IFNG,IFNGR1;IFNGR2,IFNGR1;IFNGR2,True,1.0,receiver-component expression availability
+GSE138266,TNF,TNFRSF1A;TNFRSF1B,TNFRSF1A;TNFRSF1B,True,1.0,receiver-component expression availability
+GSE138266,LTA_LTB,LTBR,LTBR,True,1.0,receiver-component expression availability
+GSE138266,CCL5,CCR1;CCR5,CCR1;CCR5,True,1.0,receiver-component expression availability
+GSE194078,CSF2,CSF2RA;CSF2RB,CSF2RA;CSF2RB,True,1.0,receiver-component expression availability
+GSE194078,IFNG,IFNGR1;IFNGR2,IFNGR1;IFNGR2,True,1.0,receiver-component expression availability
+GSE194078,TNF,TNFRSF1A;TNFRSF1B,TNFRSF1A;TNFRSF1B,True,1.0,receiver-component expression availability
+GSE194078,LTA_LTB,LTBR,LTBR,True,1.0,receiver-component expression availability
+GSE194078,CCL5,CCR1;CCR5,CCR1;CCR5,True,1.0,receiver-component expression availability
+GSE286068,CSF2,CSF2RA;CSF2RB,CSF2RA;CSF2RB,True,1.0,receiver-component expression availability
+GSE286068,IFNG,IFNGR1;IFNGR2,IFNGR1;IFNGR2,True,1.0,receiver-component expression availability
+GSE286068,TNF,TNFRSF1A;TNFRSF1B,TNFRSF1A;TNFRSF1B,True,1.0,receiver-component expression availability
+GSE286068,LTA_LTB,LTBR,LTBR,True,1.0,receiver-component expression availability
+GSE286068,CCL5,CCR1;CCR5,CCR1;CCR5,True,1.0,receiver-component expression availability
+GSE328265,CSF2,CSF2RA;CSF2RB,CSF2RA;CSF2RB,True,1.0,receiver-component expression availability
+GSE328265,IFNG,IFNGR1;IFNGR2,IFNGR1;IFNGR2,True,1.0,receiver-component expression availability
+GSE328265,TNF,TNFRSF1A;TNFRSF1B,TNFRSF1A;TNFRSF1B,True,1.0,receiver-component expression availability
+GSE328265,LTA_LTB,LTBR,LTBR,True,1.0,receiver-component expression availability
+GSE328265,CCL5,CCR1;CCR5,CCR1;CCR5,True,1.0,receiver-component expression availability

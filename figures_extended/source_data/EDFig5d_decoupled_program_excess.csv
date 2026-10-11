@@ -1,0 +1,16 @@
+dataset,endpoint,n_donors,mean_decoupled_excess,median_decoupled_excess,positive_fraction,sign_flip_p,test_method,fdr_bh_within_dataset,program,evidence_scope
+GSE138266,decoupled_excess__author_human_LAM,5,0.2612874538497389,0.1322653996833969,0.8,0.125,exact_sign_flip,0.625,author_human_LAM,differentiation-adjusted program excess
+GSE138266,decoupled_excess__mouse_LAM2_complement_APC,5,0.1151819300213579,0.2276293768373887,0.8,0.5,exact_sign_flip,0.625,mouse_LAM2_complement_APC,differentiation-adjusted program excess
+GSE138266,decoupled_excess__mouse_LAM4_fibrotic,5,-0.0156140144444822,-0.0209236217742836,0.4,0.875,exact_sign_flip,0.875,mouse_LAM4_fibrotic,differentiation-adjusted program excess
+GSE138266,decoupled_excess__mouse_GMCSF_LAM_precursor,5,0.1525846750336224,0.1070910375765452,0.8,0.25,exact_sign_flip,0.625,mouse_GMCSF_LAM_precursor,differentiation-adjusted program excess
+GSE138266,decoupled_excess__LAM4_minus_LAM2,5,-0.1307959444658403,-0.3099458366183484,0.2,0.5,exact_sign_flip,0.625,LAM4_minus_LAM2,differentiation-adjusted program excess
+GSE286068,decoupled_excess__author_human_LAM,9,0.0300851127284752,0.0544591370191457,0.5555555555555556,0.828125,exact_sign_flip,0.9296875,author_human_LAM,differentiation-adjusted program excess
+GSE286068,decoupled_excess__mouse_LAM2_complement_APC,9,0.0100881992114655,0.048045809760733,0.6666666666666666,0.9296875,exact_sign_flip,0.9296875,mouse_LAM2_complement_APC,differentiation-adjusted program excess
+GSE286068,decoupled_excess__mouse_LAM4_fibrotic,9,-0.0953214020593788,-0.1662786338338288,0.2222222222222222,0.15625,exact_sign_flip,0.390625,mouse_LAM4_fibrotic,differentiation-adjusted program excess
+GSE286068,decoupled_excess__mouse_GMCSF_LAM_precursor,9,0.3578422327549015,0.2206446113784359,0.8888888888888888,0.0078125,exact_sign_flip,0.0390625,mouse_GMCSF_LAM_precursor,differentiation-adjusted program excess
+GSE286068,decoupled_excess__LAM4_minus_LAM2,9,-0.1054096012708443,-0.1148898395683999,0.2222222222222222,0.4140625,exact_sign_flip,0.6901041666666667,LAM4_minus_LAM2,differentiation-adjusted program excess
+GSE328265,decoupled_excess__author_human_LAM,18,0.1808829615602108,0.1381690840849673,0.6666666666666666,0.0889091109088909,monte_carlo_sign_flip_100000,0.4445455545444545,author_human_LAM,differentiation-adjusted program excess
+GSE328265,decoupled_excess__mouse_LAM2_complement_APC,18,0.054478002785719,0.1196166798574629,0.6111111111111112,0.5519444805551944,monte_carlo_sign_flip_100000,0.5519444805551944,mouse_LAM2_complement_APC,differentiation-adjusted program excess
+GSE328265,decoupled_excess__mouse_LAM4_fibrotic,18,-0.0770888126825347,-0.0587301486735331,0.4444444444444444,0.4526854731452685,monte_carlo_sign_flip_100000,0.5519444805551944,mouse_LAM4_fibrotic,differentiation-adjusted program excess
+GSE328265,decoupled_excess__mouse_GMCSF_LAM_precursor,18,0.0940624304514172,0.0373417096946974,0.5555555555555556,0.2049579504204958,monte_carlo_sign_flip_100000,0.5123948760512395,mouse_GMCSF_LAM_precursor,differentiation-adjusted program excess
+GSE328265,decoupled_excess__LAM4_minus_LAM2,18,-0.1315668154682537,-0.2044580213870173,0.3333333333333333,0.3474665253347466,monte_carlo_sign_flip_100000,0.5519444805551944,LAM4_minus_LAM2,differentiation-adjusted program excess

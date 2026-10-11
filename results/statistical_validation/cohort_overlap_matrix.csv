@@ -1,0 +1,7 @@
+cohort_a,cohort_b,n_accessions_a,n_accessions_b,n_accession_overlap,accession_overlap,n_pseudonym_overlap,pseudonym_overlap,audit_status,identity_caveat
+GSE138266,GSE194078,22,22,0,,0,,PASS,No accession or pseudonym overlap. External matrices are the newly generated GSE327243/GSE328264 subseries; anonymization prevents absolute latent-identity exclusion.
+GSE138266,GSE286068,22,26,0,,0,,PASS,No accession or pseudonym overlap. External matrices are the newly generated GSE327243/GSE328264 subseries; anonymization prevents absolute latent-identity exclusion.
+GSE138266,GSE328265,22,31,0,,0,,PASS,No accession or pseudonym overlap. External matrices are the newly generated GSE327243/GSE328264 subseries; anonymization prevents absolute latent-identity exclusion.
+GSE194078,GSE286068,22,26,0,,0,,PASS,No accession or pseudonym overlap. External matrices are the newly generated GSE327243/GSE328264 subseries; anonymization prevents absolute latent-identity exclusion.
+GSE194078,GSE328265,22,31,0,,0,,PASS,No accession or pseudonym overlap. External matrices are the newly generated GSE327243/GSE328264 subseries; anonymization prevents absolute latent-identity exclusion.
+GSE286068,GSE328265,26,31,0,,0,,PASS,No accession or pseudonym overlap. External matrices are the newly generated GSE327243/GSE328264 subseries; anonymization prevents absolute latent-identity exclusion.

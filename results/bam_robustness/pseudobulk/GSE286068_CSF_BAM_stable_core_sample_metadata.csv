@@ -1,0 +1,16 @@
+gse,analysis_label,sample_accession,subject_id,diagnosis,disease_group,n_cells,library_size
+GSE286068,BAM_stable_core,GSM8717331,CSF_scRNA1,SPMS,MS,389,6248872
+GSE286068,BAM_stable_core,GSM8717332,CSF_scRNA2,Healthy donor,non_inflammatory_control,14,240812
+GSE286068,BAM_stable_core,GSM8717333,CSF_scRNA3,PPMS,MS,25,262899
+GSE286068,BAM_stable_core,GSM8717334,CSF_scRNA4,RRMS,MS,12,107830
+GSE286068,BAM_stable_core,GSM8717335,CSF_scRNA5,RRMS,MS,14,62984
+GSE286068,BAM_stable_core,GSM8717336,CSF_scRNA6,PPMS,MS,28,185550
+GSE286068,BAM_stable_core,GSM8717337,CSF_scRNA7,NIND,non_inflammatory_control,22,173234
+GSE286068,BAM_stable_core,GSM8717338,CSF_scRNA8,Healthy donor,non_inflammatory_control,7,31632
+GSE286068,BAM_stable_core,GSM8717339,CSF_scRNA9,RRMS,MS,14,189357
+GSE286068,BAM_stable_core,GSM8717340,CSF_scRNA10,Healthy donor,non_inflammatory_control,11,46844
+GSE286068,BAM_stable_core,GSM8717341,CSF_scRNA11,PPMS,MS,2,8379
+GSE286068,BAM_stable_core,GSM8717342,CSF_scRNA12,PPMS,MS,40,796835
+GSE286068,BAM_stable_core,GSM8717343,CSF_scRNA13,PPMS,MS,14,313383
+GSE286068,BAM_stable_core,GSM8717344,CSF_scRNA14,Healthy donor,non_inflammatory_control,1,2579
+GSE286068,BAM_stable_core,GSM8717345,CSF_scRNA15,RRMS,MS,0,0

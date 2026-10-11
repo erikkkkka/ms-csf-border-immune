@@ -1,0 +1,17 @@
+dataset,signature,reference_kind,n_reference_cells,n_reference_subjects,baseline_r_squared,model_scope
+GSE138266,author_human_LAM,control_cells,1938,6,0.3566378929665162,differentiation adjustment
+GSE138266,mouse_LAM2_complement_APC,control_cells,1938,6,0.4222509259274953,differentiation adjustment
+GSE138266,mouse_LAM4_fibrotic,control_cells,1938,6,0.3241796970551008,differentiation adjustment
+GSE138266,mouse_GMCSF_LAM_precursor,control_cells,1938,6,0.0502615436348972,differentiation adjustment
+GSE194078,author_human_LAM,all_cells_for_trajectory_only,3493,11,0.5755177400714744,differentiation adjustment
+GSE194078,mouse_LAM2_complement_APC,all_cells_for_trajectory_only,3493,11,0.6535650570772789,differentiation adjustment
+GSE194078,mouse_LAM4_fibrotic,all_cells_for_trajectory_only,3493,11,0.4475806140031869,differentiation adjustment
+GSE194078,mouse_GMCSF_LAM_precursor,all_cells_for_trajectory_only,3493,11,0.0683164083152709,differentiation adjustment
+GSE286068,author_human_LAM,control_cells,355,5,0.691632246394247,differentiation adjustment
+GSE286068,mouse_LAM2_complement_APC,control_cells,355,5,0.5190776922220344,differentiation adjustment
+GSE286068,mouse_LAM4_fibrotic,control_cells,355,5,0.3881497283901182,differentiation adjustment
+GSE286068,mouse_GMCSF_LAM_precursor,control_cells,355,5,0.1752900130965983,differentiation adjustment
+GSE328265,author_human_LAM,control_cells,723,8,0.4803366340963669,differentiation adjustment
+GSE328265,mouse_LAM2_complement_APC,control_cells,723,8,0.6665805381390427,differentiation adjustment
+GSE328265,mouse_LAM4_fibrotic,control_cells,723,8,0.333862409057529,differentiation adjustment
+GSE328265,mouse_GMCSF_LAM_precursor,control_cells,723,8,0.0330417588684637,differentiation adjustment

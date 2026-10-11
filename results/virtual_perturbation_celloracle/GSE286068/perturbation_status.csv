@@ -1,0 +1,6 @@
+candidate,perturbation,perturbation_value,calibration_rule,raw_imputed_detection_fraction,terminal_imputed_detection_fraction,imputed_median,imputed_q90,imputed_max,dataset,candidate_in_selected_genes,candidate_in_base_grn_regulators,candidate_active_in_fitted_grn,n_inferred_outgoing_edges,simulation_status
+IRF1,KO,0.0,fixed_zero,0.8944353518821604,0.8245614035087719,0.5205065098901589,1.5221430891089986,2.5390404793951244,GSE286068,True,True,True,70,completed
+STAT1,KO,0.0,fixed_zero,1.0,1.0,0.6761809988982148,1.0370792845057115,1.6635076585743163,GSE286068,True,True,True,249,completed
+PPARG,OE,0.25277383459938896,terminal_positive_q90,0.7127659574468085,0.3017543859649123,0.05835812414685885,0.1407381130589379,0.31799423694610596,GSE286068,True,True,True,70,completed
+NR1H3,OE,0.27439355767435497,terminal_positive_q90,0.737315875613748,0.3192982456140351,0.06902506450812021,0.20263872659868662,0.4150784172945552,GSE286068,True,True,True,10,completed
+MAFB,OE,1.1598067836629018,terminal_positive_q90,0.8829787234042553,0.4982456140350877,0.8034280791050856,1.2134311782817042,1.613892585039139,GSE286068,True,True,True,45,completed

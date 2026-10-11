@@ -1,0 +1,4 @@
+dataset,n_cells,n_root_donors,primary_marker_excluded_multiroot_spearman,primary_multiroot_state_order_spearman,marker_excluded_multiroot_state_order_spearman,median_root_IQR,start_cluster,end_cluster,root_definition
+GSE138266,7153,10,0.939362695682146,0.859802520906604,0.8569931273848221,0.017649919,4,2,multi-donor monocyte root
+GSE194078,10432,11,0.9824136376296846,0.4355983079455,0.4939178693071062,0.13928296,5,1,multi-donor monocyte root
+GSE286068,1855,13,0.992367744944454,0.1982249214263726,0.171803173564633,0.018328846,2,4,multi-donor monocyte root

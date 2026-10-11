@@ -1,0 +1,25 @@
+feature_name,contrast,combined_z,contrast_display,contrast_definition
+IRF1,decoupled_minus_other_incomplete,4.600309014057547,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+STAT1,decoupled_minus_other_incomplete,4.383488572010611,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+NFKB1,decoupled_minus_other_incomplete,2.0639072949667088,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+PPARG,decoupled_minus_other_incomplete,-1.0212757276932187,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+NR1H3,decoupled_minus_other_incomplete,-1.3680160100084382,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+MAF,decoupled_minus_other_incomplete,-2.0946250491603644,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+MAFB,decoupled_minus_other_incomplete,-0.2667232181176632,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+BHLHE41,decoupled_minus_other_incomplete,1.195785094875606,Decoupled state - other incomplete,"pseudotime <0.8, activation-high versus activation-not-high"
+IRF1,transitional_minus_early,-1.833309779250574,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+STAT1,transitional_minus_early,-2.013337174173504,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+NFKB1,transitional_minus_early,4.382207434644398,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+PPARG,transitional_minus_early,5.083311582017839,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+NR1H3,transitional_minus_early,3.764421235048339,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+MAF,transitional_minus_early,1.9030457254043465,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+MAFB,transitional_minus_early,0.2674207813405451,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+BHLHE41,transitional_minus_early,5.899297543710397,Mid-trajectory window - early window,consensus pseudotime 0.4-0.8 versus <0.4
+IRF1,terminal_minus_transitional,0.8940470498901999,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+STAT1,terminal_minus_transitional,4.23000046927189,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+NFKB1,terminal_minus_transitional,5.8445508406484645,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+PPARG,terminal_minus_transitional,4.948172612577313,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+NR1H3,terminal_minus_transitional,5.052563010395259,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+MAF,terminal_minus_transitional,2.8683573012282375,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+MAFB,terminal_minus_transitional,4.4641623256802365,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8
+BHLHE41,terminal_minus_transitional,2.7647422554166408,Late-trajectory window - mid window,consensus pseudotime >=0.8 versus 0.4-0.8

@@ -1,0 +1,37 @@
+subject_id,group,age,sex,dmt_at_sampling,treatment_note,dataset,source
+PST95809,control,43.0,female,,not applicable,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+PST83775,control,43.0,male,,not applicable,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+PTC41540,control,32.0,female,,not applicable,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+PTC85037,control,25.0,female,,not applicable,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+PTC32190,control,33.0,male,,not applicable,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+PTC45044,control,25.0,female,,not applicable,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+MS60249,MS,28.0,female,0.0,treatment-naive,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+MS58637,MS,22.0,male,0.0,treatment-naive,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+MS74594,MS,42.0,male,0.0,treatment-naive,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+MS19270,MS,35.0,female,0.0,treatment-naive,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+MS71658,MS,47.0,female,0.0,treatment-naive,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+MS49131,MS,47.0,female,0.0,treatment-naive,GSE138266,Schafflick et al. 2020 Supplementary Tables 1-2; https://doi.org/10.1038/s41467-019-14118-w
+Ctrl_1,control,60.0,male,0.0,not applicable,GSE328265,Boersch 2026 Supplementary Table 1
+Ctrl_3,control,27.0,female,0.0,not applicable,GSE328265,Boersch 2026 Supplementary Table 1
+Ctrl_5,control,32.0,female,0.0,not applicable,GSE328265,Boersch 2026 Supplementary Table 1
+Ctrl_6,control,67.0,female,0.0,not applicable,GSE328265,Boersch 2026 Supplementary Table 1
+Ctrl_9,control,73.0,male,0.0,not applicable,GSE328265,Boersch 2026 Supplementary Table 1
+Ctrl_10,control,29.0,female,0.0,not applicable,GSE328265,Boersch 2026 Supplementary Table 1
+PPMS_1,MS,67.0,female,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+PPMS_3,MS,60.0,male,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+PPMS_6,MS,46.0,male,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_1,MS,37.0,male,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_2,MS,27.0,female,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_3,MS,51.0,female,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_4,MS,41.0,male,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_5,MS,40.0,female,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_6,MS,31.0,female,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_7,MS,46.0,female,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1
+RRMS_9,MS,,,,,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_1,MS,64.0,female,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_2,MS,61.0,female,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_3,MS,62.0,male,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_4,MS,68.0,female,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_5,MS,66.0,female,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_6,MS,61.0,female,1.0,DMT,GSE328265,Boersch 2026 Supplementary Table 1
+SPMS_7,MS,57.0,female,0.0,no DMT,GSE328265,Boersch 2026 Supplementary Table 1

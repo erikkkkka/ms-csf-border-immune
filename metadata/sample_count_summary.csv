@@ -1,0 +1,18 @@
+gse,tissue,disease_group,diagnosis,n_samples
+GSE138266,CSF,IIH_control,idiopathic intracranial hypertension,6
+GSE138266,CSF,MS,Multiple Sclerosis,6
+GSE138266,PBMC,IIH_control,idiopathic intracranial hypertension,5
+GSE138266,PBMC,MS,Multiple Sclerosis,5
+GSE194078,CSF,MS,MS,3
+GSE194078,CSF,ab_mediated_idd,Ab-mediated IDD,6
+GSE194078,CSF,non_inflammatory_control,Normal,2
+GSE194078,PBMC,MS,MS,3
+GSE194078,PBMC,ab_mediated_idd,Ab-mediated IDD,6
+GSE194078,PBMC,non_inflammatory_control,Normal,2
+GSE286068,CSF,MS,Multiple sclerosis,8
+GSE286068,CSF,MS,PPMS,5
+GSE286068,CSF,MS,RRMS,4
+GSE286068,CSF,MS,SPMS,1
+GSE286068,CSF,non_inflammatory_control,Healthy donor,4
+GSE286068,CSF,non_inflammatory_control,NIND,1
+GSE286068,CSF,unknown,unknown,3

@@ -1,0 +1,3 @@
+endpoint,n_cohorts,direction_concordant,combined_z,stouffer_p,mean_standardized_effect,fdr_bh
+continuous_decoupling_index,3,True,2.7529950597803485,0.005905278734849883,0.9434639457498913,0.0077832065388081205
+decoupled_inflammatory_fraction,3,True,2.661332455985798,0.0077832065388081205,1.0208784795038057,0.0077832065388081205

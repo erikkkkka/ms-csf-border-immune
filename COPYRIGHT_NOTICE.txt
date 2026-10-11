@@ -1,0 +1,6 @@
+Copyright in the original analysis code and generated outputs remains with the
+respective rights holders. Public availability provides access for inspection;
+this notice does not grant an additional code or data reuse license.
+
+Third-party materials retain their original licenses and attribution requirements.
+See docs/THIRD_PARTY_NOTICES.md for source-specific terms.

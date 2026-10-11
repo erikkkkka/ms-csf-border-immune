@@ -1,0 +1,7 @@
+analysis,seed,vina_score_kcal_mol,minimum_ligand_nitrogen_to_ALA162_backbone_A,known_hinge_orientation_recovered_lt_3.5A,congeneric_scaffold_alignment_RMSD_A,preoptimization_score_kcal_mol
+blind_docking_top_pose,20260813,-8.206,5.5319350140796075,False,,
+blind_docking_top_pose,20260817,-8.218,5.671032445683938,False,,
+blind_docking_top_pose,20260823,-8.309,5.54936401761499,False,,
+blind_docking_top_pose,20260829,-8.318,5.5162829876647885,False,,
+blind_docking_top_pose,20260831,-8.264,5.521160928645348,False,,
+congeneric_seeded_local_optimization,20260813,-6.234,3.6780644366296777,False,2.1169014242782174,16.975

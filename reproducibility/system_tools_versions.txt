@@ -1,0 +1,40 @@
+[conda]
+conda 26.1.1
+
+[R]
+R version 4.6.0 (2026-04-24) -- "Because it was There"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin23
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+https://www.gnu.org/licenses/.
+
+[pandoc]
+pandoc 3.9.0.2
+Features: +server +lua
+Scripting engine: Lua 5.4
+User data directory: ${HOME}/.local/share/pandoc
+Copyright (C) 2006-2025 John MacFarlane. Web:  https://pandoc.org
+This is free software; see the source for copying conditions. There is no
+warranty, not even for merchantability or fitness for a particular purpose.
+
+[pdftotext]
+pdftotext version 26.04.0
+Copyright 2005-2026 The Poppler Developers - http://poppler.freedesktop.org
+Copyright 1996-2011, 2022 Glyph & Cog, LLC
+
+[obabel]
+Open Babel 3.2.1 -- Jul 11 2026 -- 19:21:27
+
+[vina]
+AutoDock Vina v1.2.7
+
+[llvm_clang]
+Homebrew clang version 22.1.8
+Target: arm64-apple-darwin25.3.0
+Thread model: posix
+InstalledDir: /opt/homebrew/Cellar/llvm/22.1.8/bin
+Configuration file: /opt/homebrew/Cellar/llvm/22.1.8/etc/clang/arm64-apple-darwin25.cfg

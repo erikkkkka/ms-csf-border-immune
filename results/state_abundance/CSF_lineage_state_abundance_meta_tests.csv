@@ -1,0 +1,12 @@
+lineage,endpoint,n_cohorts,direction_concordant,direction,stouffer_z,stouffer_p,fdr_bh
+B,abundance_logit_proportion,2,False,higher_in_MS,1.3037586660472622,0.19231587978483988,0.3022106682333198
+BAM_stable_core,MHC_I_processing_state,2,True,higher_in_MS,2.0662017505133057,0.038809433644240436,0.10672594252166119
+BAM_stable_core,abundance_logit_proportion,2,True,lower_in_MS,-2.3210975050315095,0.020281582019909754,0.10672594252166119
+T,MHC_I_processing_state,2,True,higher_in_MS,2.557510560648286,0.010542435683124539,0.10672594252166119
+T,abundance_logit_proportion,2,True,higher_in_MS,1.7412348536805595,0.08164242019005527,0.1796133244181216
+cDC1,abundance_logit_proportion,2,False,lower_in_MS,-0.23215351855727365,0.8164187783305257,0.8164187783305257
+cDC2,MHC_I_processing_state,2,True,higher_in_MS,2.0741881010900025,0.03806184487766755,0.10672594252166119
+cDC2,abundance_logit_proportion,2,False,lower_in_MS,-0.34977263359618177,0.7265093385333443,0.7991602723866787
+classical_monocyte,MHC_I_processing_state,2,True,higher_in_MS,1.570109247104342,0.11638969765798074,0.2133811123729647
+classical_monocyte,abundance_logit_proportion,2,False,lower_in_MS,-1.0224862262541166,0.3065508284297699,0.3746732347474965
+pDC,abundance_logit_proportion,2,True,higher_in_MS,1.0269672964109506,0.3044358637473463,0.3746732347474965

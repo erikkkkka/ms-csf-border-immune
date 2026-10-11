@@ -1,0 +1,13 @@
+gse,analysis_label,sample_accession,subject_id,diagnosis,disease_group,n_cells,library_size
+GSE138266,BAM_stable_core,GSM4104122,MS19270,Multiple Sclerosis,MS,41,202325
+GSE138266,BAM_stable_core,GSM4104123,MS58637,Multiple Sclerosis,MS,26,92665
+GSE138266,BAM_stable_core,GSM4104124,MS71658,Multiple Sclerosis,MS,134,585005
+GSE138266,BAM_stable_core,GSM4104125,MS49131,Multiple Sclerosis,MS,18,65859
+GSE138266,BAM_stable_core,GSM4104126,MS60249,Multiple Sclerosis,MS,38,227410
+GSE138266,BAM_stable_core,GSM4104127,MS74594,Multiple Sclerosis,MS,24,28473
+GSE138266,BAM_stable_core,GSM4104128,PST83775,idiopathic intracranial hypertension,IIH_control,134,835988
+GSE138266,BAM_stable_core,GSM4104129,PTC32190,idiopathic intracranial hypertension,IIH_control,444,1986910
+GSE138266,BAM_stable_core,GSM4104130,PST95809,idiopathic intracranial hypertension,IIH_control,96,505628
+GSE138266,BAM_stable_core,GSM4104131,PTC41540,idiopathic intracranial hypertension,IIH_control,161,786640
+GSE138266,BAM_stable_core,GSM4104132,PTC45044,idiopathic intracranial hypertension,IIH_control,500,2575452
+GSE138266,BAM_stable_core,GSM4104133,PTC85037,idiopathic intracranial hypertension,IIH_control,10,16413

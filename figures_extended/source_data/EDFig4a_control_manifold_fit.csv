@@ -1,0 +1,5 @@
+control_n_cells,control_r_squared,control_residual_center,control_residual_sd,dataset,module,fit_scope
+1938,0.175602149424382,-0.0555192156716676,0.3327224474915749,GSE138266,MHC_I,control-cell differentiation model
+1938,0.0701170389725833,-0.1125798218223693,0.461582988561762,GSE138266,IFN,control-cell differentiation model
+355,0.3419772317941616,-0.0330443660583154,0.4200393061948858,GSE286068,MHC_I,control-cell differentiation model
+355,0.1081918081984888,-0.2111961724828944,0.5022454425540782,GSE286068,IFN,control-cell differentiation model

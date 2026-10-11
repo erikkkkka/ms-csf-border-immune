@@ -1,0 +1,6 @@
+candidate,perturbation,route,n_primary_endpoints,n_directionally_replicated_endpoints,n_cross_cohort_fdr_lt_0_10,n_primary_support_endpoints,n_network_specific_endpoints,harmful_veto,best_primary_fdr,best_external_empirical_network_p,decision
+IRF1,KO,inflammation_unlock,2,1,2,1,0,False,2.1772848359490527e-08,0.13725490196078433,advance_mechanistic_network_sensitivity
+PPARG,OE,adaptation_restoration,2,1,1,1,0,False,2.1772848359490527e-08,0.47058823529411764,advance_mechanistic_network_sensitivity
+STAT1,KO,inflammation_unlock,2,1,1,1,1,True,2.1772848359490527e-08,0.0784313725490196,advance_primary_with_compensatory_design
+MAFB,OE,adaptation_restoration,2,0,1,0,0,True,5.7982108155481114e-05,0.2549019607843137,do_not_prioritize
+NR1H3,OE,adaptation_restoration,2,0,1,0,0,False,0.00010148603124756943,0.3333333333333333,do_not_prioritize

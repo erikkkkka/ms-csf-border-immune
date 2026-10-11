@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+import argparse
+import re
+import subprocess
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from vina import Vina
+
+
+def run(command: list[str]) -> None:
+    subprocess.run(command, check=True)
+
+
+def pdbqt_coordinates(path: Path) -> np.ndarray:
+    coords = []
+    for line in path.read_text().splitlines():
+        if line.startswith(("ATOM  ", "HETATM")):
+            coords.append([float(line[30:38]), float(line[38:46]), float(line[46:54])])
+    return np.asarray(coords)
+
+
+def split_models(path: Path) -> list[np.ndarray]:
+    models = []
+    current = []
+    for line in path.read_text().splitlines():
+        if line.startswith("MODEL"):
+            current = []
+        elif line.startswith(("ATOM  ", "HETATM")):
+            current.append([float(line[30:38]), float(line[38:46]), float(line[46:54])])
+        elif line.startswith("ENDMDL") and current:
+            models.append(np.asarray(current))
+            current = []
+    if current:
+        models.append(np.asarray(current))
+    return models
+
+
+def vina_scores(path: Path) -> list[float]:
+    scores = []
+    for line in path.read_text().splitlines():
+        match = re.match(r"REMARK VINA RESULT:\s+(-?\d+(?:\.\d+)?)", line)
+        if match:
+            scores.append(float(match.group(1)))
+    return scores
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", default="ms_csf_border_immune")
+    parser.add_argument("--exhaustiveness", type=int, default=64)
+    parser.add_argument("--seed", type=int, default=20260810)
+    args = parser.parse_args()
+
+    root = Path(args.root).resolve()
+    env_dir = root / ".conda_docking" / "bin"
+    out_dir = root / "results" / "docking" / "8QQ4_LTA4H_redocking"
+    grid = pd.read_csv(out_dir / "8QQ4_WEE_grid_definition.csv").iloc[0]
+    receptor_pdb = out_dir / "8QQ4_LTA4H_protein_Zn.pdb"
+    ligand_pdb = out_dir / "8QQ4_WEE_crystal.pdb"
+    ligand_sdf = out_dir / "8QQ4_WEE_crystal.sdf"
+    ligand_pdbqt = out_dir / "8QQ4_WEE_crystal.pdbqt"
+    receptor_pdbqt = out_dir / "8QQ4_LTA4H_protein_Zn.pdbqt"
+    docked_pdbqt = out_dir / "8QQ4_WEE_redocked.pdbqt"
+
+    run([str(env_dir / "obabel"), str(ligand_pdb), "-O", str(ligand_sdf), "-h"])
+    run([
+        str(env_dir / "mk_prepare_ligand.py"), "-i", str(ligand_sdf),
+        "-o", str(ligand_pdbqt), "--add_index_map",
+    ])
+    run([
+        str(env_dir / "mk_prepare_receptor.py"), "--read_pdb", str(receptor_pdb),
+        "-o", str(out_dir / "8QQ4_LTA4H_protein_Zn"), "-p", str(receptor_pdbqt), "-a",
+        "--wanted_altloc", "A:223=A,A:240=B",
+    ])
+    receptor_text = receptor_pdbqt.read_text()
+    if not any(" ZN " in line and line.startswith(("ATOM", "HETATM")) for line in receptor_text.splitlines()):
+        raise RuntimeError("Prepared receptor does not contain catalytic zinc")
+
+    center = [float(grid[f"center_{axis}"]) for axis in "xyz"]
+    size = [float(grid[f"size_{axis}"]) for axis in "xyz"]
+    vina = Vina(sf_name="vina", seed=args.seed, verbosity=1)
+    vina.set_receptor(str(receptor_pdbqt))
+    vina.set_ligand_from_file(str(ligand_pdbqt))
+    vina.compute_vina_maps(center=center, box_size=size)
+    vina.dock(exhaustiveness=args.exhaustiveness, n_poses=20)
+    vina.write_poses(str(docked_pdbqt), n_poses=20, overwrite=True)
+
+    reference = pdbqt_coordinates(ligand_pdbqt)
+    poses = split_models(docked_pdbqt)
+    scores = vina_scores(docked_pdbqt)
+    rows = []
+    for rank, pose in enumerate(poses, start=1):
+        rmsd = np.nan
+        if pose.shape == reference.shape:
+            rmsd = float(np.sqrt(np.mean(np.sum((pose - reference) ** 2, axis=1))))
+        rows.append({
+            "pose_rank": rank,
+            "vina_score_kcal_mol": scores[rank - 1] if rank <= len(scores) else np.nan,
+            "heavy_atom_rmsd_A": rmsd,
+        })
+    result = pd.DataFrame(rows)
+    result["validation_pass_rmsd_lt_2A"] = result["heavy_atom_rmsd_A"] < 2.0
+    result["exhaustiveness"] = args.exhaustiveness
+    result["seed"] = args.seed
+    result["structure_resolution_A"] = 1.6
+    result["catalytic_zinc_retained"] = True
+    result["score_interpretation"] = "pose_validation_only_metalloenzyme"
+    result.to_csv(out_dir / "8QQ4_WEE_redocking_validation.csv", index=False)
+
+
+if __name__ == "__main__":
+    main()

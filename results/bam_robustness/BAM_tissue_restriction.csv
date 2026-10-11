@@ -1,0 +1,10 @@
+gse,definition,tissue,n_cells,n_samples
+GSE138266,reference_BAM,CSF,2150,12
+GSE138266,reference_BAM,PBMC,3,3
+GSE138266,stable_core,CSF,1626,12
+GSE194078,reference_BAM,CSF,1186,11
+GSE194078,reference_BAM,PBMC,1,1
+GSE194078,stable_core,CSF,1096,11
+GSE194078,stable_core,PBMC,1,1
+GSE286068,reference_BAM,CSF,1050,15
+GSE286068,stable_core,CSF,593,14

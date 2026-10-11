@@ -1,0 +1,4 @@
+gse,n_apc,n_reference_BAM,n_monocyte_excluded,n_stable_core,stable_core_recall,median_resolution_count_reference_BAM,pct_reference_BAM_top_individual_module,pct_reference_BAM_above_monocyte_modules,annotation_scope
+GSE138266,11318,2153,2021,1626,0.7552252670692058,5.0,75.52252670692057,93.86901997213192,BAM-like confidence-supported annotation
+GSE194078,21785,1187,1163,1097,0.924178601516428,5.0,92.58635214827297,97.97809604043807,BAM-like confidence-supported annotation
+GSE286068,2846,1050,847,593,0.5647619047619048,5.0,69.80952380952381,80.66666666666666,BAM-like confidence-supported annotation

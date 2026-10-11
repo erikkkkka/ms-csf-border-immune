@@ -1,0 +1,2 @@
+n_eligible_donor_pairs,n_common_genes,n_direction_concordant,n_frozen_lock_genes,n_NIBR_profiles,n_compounds,n_advancing_profiles,perturbation_cell_line,profile_duration_h,screen_role
+32,20751,3483,300,76,19,1,U2OS,24,phenotypic execution screen; not disease-cell efficacy

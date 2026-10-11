@@ -1,0 +1,13 @@
+dataset,signature_type,perturbation,endpoint,n_donors,mean_effect,median_effect,standardized_effect,positive_fraction,expected_sign,expected_direction_success,sign_flip_p,test_method,fdr_bh_within_dataset_endpoint,signature_display,statistical_unit
+GSE138266,direct_ko_consensus,Ifngr1,axis2_spearman,10,-0.0873231139757318,-0.0974596332424121,-0.6255302602233155,0.3,-1.0,True,0.078125,exact_sign_flip,0.1041666666666666,Direct KO-like,donor
+GSE138266,direct_ko_consensus,Ifngr1,decoupled_minus_other_incomplete,5,-0.0042318490281437,-0.0233765514023235,-0.0359371963986332,0.4,-1.0,True,0.9375,exact_sign_flip,0.9375,Direct KO-like,donor
+GSE138266,published_response,Ifngr1,axis2_spearman,10,0.123379989876001,0.1083301579681227,3.0371591763773527,1.0,1.0,True,0.001953125,exact_sign_flip,0.0078125,Response,donor
+GSE138266,published_response,Ifngr1,decoupled_minus_other_incomplete,5,0.2441049869900353,0.1918423549411323,1.1186333039527148,0.8,1.0,True,0.125,exact_sign_flip,0.5,Response,donor
+GSE286068,direct_ko_consensus,Ifngr1,axis2_spearman,11,-0.1853355746283359,-0.2341329556519429,-1.2134893038801506,0.1818181818181818,-1.0,True,0.005859375,exact_sign_flip,0.0078125,Direct KO-like,donor
+GSE286068,direct_ko_consensus,Ifngr1,decoupled_minus_other_incomplete,9,-0.612305551699663,-0.6071305885663718,-1.9068767077956543,0.0,-1.0,True,0.00390625,exact_sign_flip,0.015625,Direct KO-like,donor
+GSE286068,published_response,Ifngr1,axis2_spearman,11,0.1521389228286213,0.1719566840926064,1.1864573262750333,0.9090909090909092,1.0,True,0.0048828125,exact_sign_flip,0.009765625,Response,donor
+GSE286068,published_response,Ifngr1,decoupled_minus_other_incomplete,9,0.5630673945060919,0.4422700839779835,1.546193133181207,1.0,1.0,True,0.00390625,exact_sign_flip,0.015625,Response,donor
+GSE328265,direct_ko_consensus,Ifngr1,axis2_spearman,22,-0.1033186857146978,-0.068523218355629,-0.6691380559489086,0.2272727272727272,-1.0,True,0.0037599624003759,mc_sign_flip_100000,0.0150398496015039,Direct KO-like,donor
+GSE328265,direct_ko_consensus,Ifngr1,decoupled_minus_other_incomplete,18,-0.1945789652869104,-0.1330034093978458,-0.5030849760999667,0.3333333333333333,-1.0,True,0.0448095519044809,mc_sign_flip_100000,0.0840791592084079,Direct KO-like,donor
+GSE328265,published_response,Ifngr1,axis2_spearman,22,0.1392073133587938,0.143730007970298,0.9472675221340237,0.8181818181818182,1.0,True,9.99990000099999e-05,mc_sign_flip_100000,0.0003999960000399,Response,donor
+GSE328265,published_response,Ifngr1,decoupled_minus_other_incomplete,18,0.2866230408831993,0.1628479562417528,0.7322274676384506,0.8333333333333334,1.0,True,0.0061099389006109,mc_sign_flip_100000,0.0244397556024439,Response,donor

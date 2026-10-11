@@ -1,0 +1,18 @@
+target,target_role,n_libraries_with_paired_signatures,n_libraries_positive_mean_direction,n_libraries_advance,primary_XPR_advance,secondary_library_advance,decision,evidence_scope
+STAT1,validated execution-anchor positive control,2,2,1,True,False,advance_primary_genetic_support,cross-library loss-of-function direction audit
+GSK3B,BX-912 annotated target,3,1,1,True,False,advance_primary_genetic_support,cross-library loss-of-function direction audit
+IRF1,validated execution-node positive control,2,2,1,False,True,secondary_only_requires_primary_replication,cross-library loss-of-function direction audit
+AKT2,BX-912 annotated target,2,2,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+JAK2,IFNGR relay comparator,3,2,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+TYK2,JAK-family comparator,4,2,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+CHEK1,BX-912 annotated target,2,1,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+KDR,BX-912 annotated target,1,1,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+AURKA,BX-912 high-affinity ChEMBL off-target,4,1,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+TBK1,BX-912 measured ChEMBL off-target,3,1,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+PPARG,terminal-adaptation comparator,3,1,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+VDR,nuclear-receptor comparator,3,1,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+PDPK1,BX-912 annotated target,2,0,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+CDK2,BX-912 annotated target,1,0,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+MARK3,BX-912 measured ChEMBL off-target,1,0,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+MARK4,BX-912 measured ChEMBL off-target,1,0,0,False,False,no_genetic_support,cross-library loss-of-function direction audit
+JAK1,IFNGR relay comparator,1,0,0,False,False,no_genetic_support,cross-library loss-of-function direction audit

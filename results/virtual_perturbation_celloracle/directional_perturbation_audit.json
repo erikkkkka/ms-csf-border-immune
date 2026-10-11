@@ -1,0 +1,13 @@
+{
+  "datasets": [
+    "GSE138266",
+    "GSE286068",
+    "GSE328265"
+  ],
+  "n_candidates": 5,
+  "n_candidate_cohort_simulations": 15,
+  "n_completed": 15,
+  "n_target_shuffled_GRNs_per_cohort": 50,
+  "maximum_absolute_one_step_heldout_effect": 0.0,
+  "one_step_heldout_negative_control_pass": true
+}

@@ -1,0 +1,28 @@
+dataset,stage,module,stage_display,annotation_role,scaled_median,raw_median
+GSE138266,CSF_classical_monocyte,Monocyte entry,CSF entry,"confidence definition, not a discrete cell type",1.0,1.7476856
+GSE138266,CSF_BAM_intermediate,Monocyte entry,BAM reference non-core,"confidence definition, not a discrete cell type",0.0,0.28836483
+GSE138266,CSF_BAM_terminal,Monocyte entry,High-confidence BAM core,"confidence definition, not a discrete cell type",0.003126310605446922,0.29292712
+GSE138266,CSF_classical_monocyte,GM-CSF response,CSF entry,"confidence definition, not a discrete cell type",0.031147298430305337,0.24971955
+GSE138266,CSF_BAM_intermediate,GM-CSF response,BAM reference non-core,"confidence definition, not a discrete cell type",0.0,0.245204
+GSE138266,CSF_BAM_terminal,GM-CSF response,High-confidence BAM core,"confidence definition, not a discrete cell type",1.0,0.39017805
+GSE138266,CSF_classical_monocyte,BAM identity,CSF entry,"confidence definition, not a discrete cell type",0.0,0.11108948
+GSE138266,CSF_BAM_intermediate,BAM identity,BAM reference non-core,"confidence definition, not a discrete cell type",0.4142440148569471,0.60524863
+GSE138266,CSF_BAM_terminal,BAM identity,High-confidence BAM core,"confidence definition, not a discrete cell type",1.0,1.3040075
+GSE194078,CSF_classical_monocyte,Monocyte entry,CSF entry,"confidence definition, not a discrete cell type",1.0,2.2976327
+GSE194078,CSF_BAM_intermediate,Monocyte entry,BAM reference non-core,"confidence definition, not a discrete cell type",0.0,0.42360806
+GSE194078,CSF_BAM_terminal,Monocyte entry,High-confidence BAM core,"confidence definition, not a discrete cell type",0.10600652507962754,0.6222669
+GSE194078,CSF_classical_monocyte,GM-CSF response,CSF entry,"confidence definition, not a discrete cell type",0.0,0.5119074
+GSE194078,CSF_BAM_intermediate,GM-CSF response,BAM reference non-core,"confidence definition, not a discrete cell type",0.5194092634270325,0.6377857
+GSE194078,CSF_BAM_terminal,GM-CSF response,High-confidence BAM core,"confidence definition, not a discrete cell type",1.0,0.75425637
+GSE194078,CSF_classical_monocyte,BAM identity,CSF entry,"confidence definition, not a discrete cell type",0.0,0.19462004
+GSE194078,CSF_BAM_intermediate,BAM identity,BAM reference non-core,"confidence definition, not a discrete cell type",0.3832646142683917,0.8312168
+GSE194078,CSF_BAM_terminal,BAM identity,High-confidence BAM core,"confidence definition, not a discrete cell type",1.0,1.855605
+GSE286068,CSF_classical_monocyte,Monocyte entry,CSF entry,"confidence definition, not a discrete cell type",1.0,1.6647148
+GSE286068,CSF_BAM_intermediate,Monocyte entry,BAM reference non-core,"confidence definition, not a discrete cell type",0.0,0.30766258
+GSE286068,CSF_BAM_terminal,Monocyte entry,High-confidence BAM core,"confidence definition, not a discrete cell type",0.15128435514441738,0.51296335
+GSE286068,CSF_classical_monocyte,GM-CSF response,CSF entry,"confidence definition, not a discrete cell type",0.2649665776871009,1.1518226
+GSE286068,CSF_BAM_intermediate,GM-CSF response,BAM reference non-core,"confidence definition, not a discrete cell type",0.0,1.015666
+GSE286068,CSF_BAM_terminal,GM-CSF response,High-confidence BAM core,"confidence definition, not a discrete cell type",1.0,1.5295293
+GSE286068,CSF_classical_monocyte,BAM identity,CSF entry,"confidence definition, not a discrete cell type",0.0,0.25032622
+GSE286068,CSF_BAM_intermediate,BAM identity,BAM reference non-core,"confidence definition, not a discrete cell type",0.4229869199666334,1.0699887
+GSE286068,CSF_BAM_terminal,BAM identity,High-confidence BAM core,"confidence definition, not a discrete cell type",1.0,2.1881225

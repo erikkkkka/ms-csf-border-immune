@@ -1,0 +1,4 @@
+dataset,analysis_role,n_primary_donors,n_age,n_sex,n_treatment_status_among_ms,n_ms,age_sex_model_estimable,treatment_model_estimable,source,reason,age_coverage_fraction,sex_coverage_fraction
+GSE138266,discovery disease contrast,11,11,11,6,6,True,False,Schafflick 2020 Supplementary Tables 1-2,"Complete age/sex mapping; all MS donors treatment-naive, so DMT has no variation.",1.0,1.0
+GSE286068,discovery disease contrast,14,0,0,0,9,False,False,Parween 2025 Supplementary Data 2 and GEO metadata,Supplement gives cohort participant metadata but no verifiable mapping to GEO pseudonyms; no order-based imputation used.,0.0,0.0
+GSE328265,frozen external disease contrast,24,23,23,17,18,True,True,Boersch 2026 Supplementary Table 1,Age/sex complete for 23/24; DMT sensitivity estimable within 17/18 MS donors.,0.9583333333333334,0.9583333333333334

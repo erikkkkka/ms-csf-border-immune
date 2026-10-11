@@ -1,0 +1,5 @@
+dataset,n_input_qc,n_singlets,n_samples,statistical_unit
+GSE138266,76024,69867,22,sample aggregated within cohort
+GSE194078,155707,137903,22,sample aggregated within cohort
+GSE286068,24402,22825,15,sample aggregated within cohort
+GSE328265,55101,49697,31,sample aggregated within cohort

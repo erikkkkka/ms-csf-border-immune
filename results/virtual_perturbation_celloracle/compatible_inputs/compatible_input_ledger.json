@@ -1,0 +1,41 @@
+[
+  {
+    "dataset": "GSE138266",
+    "source_path": "results/trajectory/continuum_objects/GSE138266_monocyte_BAM_continuum.h5ad",
+    "output_path": "results/virtual_perturbation_celloracle/compatible_inputs/GSE138266_MS_CSF_continuum_minimal.h5ad",
+    "n_cells": 531,
+    "n_genes": 33694,
+    "n_donors": 6,
+    "threshold_key": "two_axis_control_activation_q75",
+    "threshold_value": 0.568493666762522,
+    "embedding_source": "source_X_umap",
+    "expression_checksum_sum": 1018003.75,
+    "expression_checksum_squared_sum": 2083040.25
+  },
+  {
+    "dataset": "GSE286068",
+    "source_path": "results/trajectory/continuum_objects/GSE286068_monocyte_BAM_continuum.h5ad",
+    "output_path": "results/virtual_perturbation_celloracle/compatible_inputs/GSE286068_MS_CSF_continuum_minimal.h5ad",
+    "n_cells": 1500,
+    "n_genes": 37143,
+    "n_donors": 10,
+    "threshold_key": "two_axis_control_activation_q75",
+    "threshold_value": 0.6408242698520397,
+    "embedding_source": "source_X_umap",
+    "expression_checksum_sum": 5408846.0,
+    "expression_checksum_squared_sum": 7555482.0
+  },
+  {
+    "dataset": "GSE328265",
+    "source_path": "results/external_validation/GSE328265_two_axis_projection/GSE328265_monocyte_BAM_two_axis.h5ad",
+    "output_path": "results/virtual_perturbation_celloracle/compatible_inputs/GSE328265_MS_CSF_continuum_minimal.h5ad",
+    "n_cells": 2610,
+    "n_genes": 23375,
+    "n_donors": 22,
+    "threshold_key": "external_control_activation_q75",
+    "threshold_value": 0.5497035902667085,
+    "embedding_source": "standardized_projected_differentiation_and_external_activation_residual",
+    "expression_checksum_sum": 6202014.5,
+    "expression_checksum_squared_sum": 11736341.0
+  }
+]

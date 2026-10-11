@@ -1,0 +1,21 @@
+signature_type,perturbation,endpoint,excluded_dataset,n_cohorts_retained,n_donors_retained,combined_z,stouffer_p,audit_scope
+direct_ko_consensus,Ifngr1,axis2_spearman,GSE138266,2,33,-3.956820261488078,7.595403617356574e-05,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,axis2_spearman,GSE286068,2,32,-3.387389935575594,0.0007056102260059,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,axis2_spearman,GSE328265,2,21,-3.2099879341205417,0.0013274054415277,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,decoupled_minus_other_incomplete,GSE138266,2,27,-3.304271749511686,0.0009522348067606,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,decoupled_minus_other_incomplete,GSE286068,2,23,-1.8115587176373071,0.0700544085645695,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,decoupled_minus_other_incomplete,GSE328265,2,14,-2.360515490715851,0.0182495561215827,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,pseudotime_spearman,GSE138266,3,49,2.5989454343374456,0.0093510636188562,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,pseudotime_spearman,GSE194078,3,49,2.51562661610779,0.0118820989007752,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,pseudotime_spearman,GSE286068,3,46,1.4132427305822737,0.1575843664356528,post hoc leave-one-cohort-out robustness audit
+direct_ko_consensus,Ifngr1,pseudotime_spearman,GSE328265,3,36,3.751799870972629,0.0001755695914185,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,axis2_spearman,GSE138266,2,33,4.80170447127622,1.573207559655484e-06,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,axis2_spearman,GSE286068,2,32,4.957336437587218,7.146616164437212e-07,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,axis2_spearman,GSE328265,2,21,4.17442358898129,2.9874146396259084e-05,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,decoupled_minus_other_incomplete,GSE138266,2,27,3.904710613778638,9.433820341550966e-05,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,decoupled_minus_other_incomplete,GSE286068,2,23,3.140845237807776,0.0016846102659108,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,decoupled_minus_other_incomplete,GSE328265,2,14,3.2304674935919837,0.0012358795695826,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,pseudotime_spearman,GSE138266,3,49,2.1450896116998743,0.0319456828645946,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,pseudotime_spearman,GSE194078,3,49,1.851611858774608,0.0640815789247164,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,pseudotime_spearman,GSE286068,3,46,5.091191476878044,3.5582047513696125e-07,post hoc leave-one-cohort-out robustness audit
+published_response,Ifngr1,pseudotime_spearman,GSE328265,3,36,0.8480838328154112,0.3963912846718573,post hoc leave-one-cohort-out robustness audit

@@ -1,0 +1,4 @@
+source_lineage,source_module,target,n_subjects,correlation,permutation_p,fdr_bh
+classical_monocyte,MHC_I_processing,BAM_stable_core_MHC_I_processing,14,0.5490670868560521,0.0946890531094689,0.0946890531094689
+cDC2,MHC_I_processing,BAM_stable_core_MHC_I_processing,22,0.5380025153506525,0.018739812601873983,0.05621943780562195
+T,MHC_I_processing,BAM_stable_core_MHC_I_processing,22,0.48905396176405724,0.04136958630413696,0.06205437945620544

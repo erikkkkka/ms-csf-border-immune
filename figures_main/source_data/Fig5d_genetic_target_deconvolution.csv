@@ -1,0 +1,10 @@
+target,target_role,n_libraries_with_paired_signatures,n_libraries_positive_mean_direction,n_libraries_advance,primary_XPR_advance,secondary_library_advance,decision
+STAT1,validated execution-anchor positive control,2,2,1,True,False,advance_primary_genetic_support
+IRF1,validated execution-node positive control,2,2,1,False,True,secondary_only_requires_primary_replication
+GSK3B,BX-912 annotated target,3,1,1,True,False,advance_primary_genetic_support
+PDPK1,BX-912 annotated target,2,0,0,False,False,no_genetic_support
+AKT2,BX-912 annotated target,2,2,0,False,False,no_genetic_support
+JAK2,IFNGR relay comparator,3,2,0,False,False,no_genetic_support
+TYK2,JAK-family comparator,4,2,0,False,False,no_genetic_support
+AURKA,BX-912 high-affinity ChEMBL off-target,4,1,0,False,False,no_genetic_support
+CHEK1,BX-912 annotated target,2,1,0,False,False,no_genetic_support

@@ -1,0 +1,21 @@
+regulator,recommended_perturbation,n_targets_original,n_axis2_targets_removed,n_LAM_targets_removed,n_targets_after_exclusion,activity_status,holdout_scope
+IRF1,KO,83,8,2,73,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+STAT1,KO,1129,10,18,1101,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+STAT3,KO,175,1,4,170,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+STAT5A,KO,68,0,1,67,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+STAT5B,KO,80,0,0,80,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+NFKB1,KO,250,2,9,239,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+NFKB2,KO,62,0,0,62,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+RELA,KO,243,3,9,231,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+RELB,KO,72,0,2,70,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+CEBPB,KO,90,0,0,90,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+BHLHE40,KO,58,0,0,58,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+HIF1A,KO,262,0,6,256,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+ZEB2,KO,53,0,0,53,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+SPI1,OE,599,4,6,589,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+MAF,OE,39,0,0,39,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+MAFB,OE,53,0,0,53,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+PPARG,OE,108,0,1,107,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+NR1H3,OE,12,0,1,11,DoRothEA_ULM,Axis 2 and LAM targets removed before activity scoring
+TFEB,OE,0,0,0,0,expression_proxy_only,Axis 2 and LAM targets removed before activity scoring
+BHLHE41,OE,0,0,0,0,expression_proxy_only,Axis 2 and LAM targets removed before activity scoring

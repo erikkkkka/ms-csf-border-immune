@@ -1,0 +1,7 @@
+candidate,virtual_perturbation,endpoint,endpoint_display,evidence_z,fdr,evidence_role
+IRF1,KO,axis2,Axis 2 suppression,5.685229521351445,2.1772848359490527e-08,expected-direction benefit
+IRF1,KO,gmcsf_lam_precursor,Precursor reduction,2.4204212501786704,0.0129187805858387,expected-direction benefit
+IRF1,KO,lam2_complement_apc,LAM2 harm veto,-4.1643153204165495,0.9999999967641374,harmful-direction veto
+STAT1,KO,axis2,Axis 2 suppression,5.804088082607962,2.1772848359490527e-08,expected-direction benefit
+STAT1,KO,gmcsf_lam_precursor,Precursor reduction,0.8867030117876501,0.2680277260161867,expected-direction benefit
+STAT1,KO,lam2_complement_apc,LAM2 harm veto,5.804088082607962,2.2651037763633432e-08,harmful-direction veto

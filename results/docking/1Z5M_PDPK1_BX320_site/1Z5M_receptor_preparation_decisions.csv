@@ -1,0 +1,2 @@
+structure_issue,prespecified_action,rationale,minimum_distance_to_BX320_A,pocket_relevance
+ARG_A75_missing_sidechain_atoms,remove_incomplete_residue,unresolved_crystallographic_sidechain_outside_ATP_site,19.07,remote

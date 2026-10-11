@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "original_csvs_compared": 309,
+  "original_csv_values_compared": 62239489,
+  "figure_csvs_compared": 61,
+  "figure_csv_values_compared": 92962,
+  "processed_files_verified": 284,
+  "h5ad_privacy_checked": 14,
+  "supplementary_workbooks_checked": 7,
+  "privacy_scan": "PASS",
+  "full_analysis_rerun": false,
+  "scope": "Staged CSVs, regenerated figure source tables, workbook XML privacy, archive bytes, and h5ad strings/attributes"
+}

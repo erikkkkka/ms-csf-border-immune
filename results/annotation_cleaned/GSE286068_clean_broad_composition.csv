@@ -1,0 +1,14 @@
+tissue,disease_group,broad_cell_type,n_cells
+CSF,MS,B,261
+CSF,MS,Dendritic,1386
+CSF,MS,Erythroid,1
+CSF,MS,Myeloid,1021
+CSF,MS,NK,731
+CSF,MS,Plasma,157
+CSF,MS,T,16609
+CSF,non_inflammatory_control,B,28
+CSF,non_inflammatory_control,Dendritic,129
+CSF,non_inflammatory_control,Myeloid,310
+CSF,non_inflammatory_control,NK,97
+CSF,non_inflammatory_control,Plasma,3
+CSF,non_inflammatory_control,T,2023
