@@ -41,6 +41,13 @@
     "seed": "12345"
   },
   {
+    "name": "trajectory_endpoint_auc",
+    "runtime": "main",
+    "script": "scripts/84_export_multiroot_endpoint_auc.py",
+    "args": [],
+    "seed": "deterministic/no stochastic operation"
+  },
+  {
     "name": "two_axis_model",
     "runtime": "main",
     "script": "scripts/53_two_axis_donor_model.py",

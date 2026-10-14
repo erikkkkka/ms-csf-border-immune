@@ -607,7 +607,7 @@ def ed8(root: Path, output: Path, source: Path) -> None:
     fig, ax = grid_figure(130)
     fig.subplots_adjust(left=0.135, wspace=0.54)
     primary = pd.read_csv(root / "results/virtual_perturbation_celloracle/primary_endpoint_meta_analysis.csv")
-    primary["evidence_scope"] = "virtual perturbation in observed donor-specific GRNs"
+    primary["evidence_scope"] = "virtual perturbation in fitted whole-cohort GRNs; effects aggregated by donor"
     export(primary, source, "EDFig8a_observed_vs_network_specific")
     for row in primary.itertuples():
         color = COLORS["ms"] if row.candidate in {"IRF1","STAT1"} else COLORS["terminal"]

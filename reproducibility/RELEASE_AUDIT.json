@@ -1,13 +1,27 @@
 {
-  "status": "PASS",
-  "original_csvs_compared": 309,
-  "original_csv_values_compared": 62239489,
-  "figure_csvs_compared": 61,
-  "figure_csv_values_compared": 92962,
-  "processed_files_verified": 284,
-  "h5ad_privacy_checked": 14,
-  "supplementary_workbooks_checked": 7,
-  "privacy_scan": "PASS",
+  "unchanged_existing_scientific_tables": 363,
+  "GRN_numeric_values_and_sample_metadata_unchanged": true,
+  "regenerated_figure_source_tables_matching": 61,
+  "workbook_sheets_matching_source_values": 92,
+  "five_unrelated_workbooks_byte_identical": true,
+  "statistical_scope_checks_passed": 16,
+  "old_AUC_baseline_negative_control_detected": true,
+  "Figure1e_matches_current_manuscript_AUCs": [
+    "0.985",
+    "0.888",
+    "0.657"
+  ],
+  "PDFs_byte_identical_to_verified_final_exports": 14,
+  "Figure1_uses_verified_method_matched_AUC_revision": true,
+  "PDF_export_layout_verified": true,
+  "publication_hygiene": "PASS",
+  "public_files_scanned": 558,
+  "copyright_terms_unchanged": true,
   "full_analysis_rerun": false,
-  "scope": "Staged CSVs, regenerated figure source tables, workbook XML privacy, archive bytes, and h5ad strings/attributes"
+  "status": "PASS",
+  "version": "v0.1.1",
+  "base_release": "v0.1.0",
+  "base_commit": "08825171449ccf50d320308460c5a30e83e9881c",
+  "unchanged_processed_archives": 4,
+  "processed_checkpoint_inputs_verified": 4
 }

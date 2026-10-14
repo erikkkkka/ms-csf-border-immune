@@ -1,0 +1,17 @@
+check,detail,passed
+primary_three_cohort_meta,"Two_axis_meta must match the three-cohort, two-endpoint synthesis.",True
+discovery_only_meta_retained,"Two_axis_meta_discovery retains the separate two-cohort, 11-test family.",True
+full_multiroot_auc_saved_cells,Six full-cohort AUCs match saved donor-root DPT scores and Table 3.,True
+Figure1e_same_method_GSE138266,Full and donor-omission AUCs use primary multiroot DPT and the same trajectory-role endpoints.,True
+Figure1e_same_method_GSE194078,Full and donor-omission AUCs use primary multiroot DPT and the same trajectory-role endpoints.,True
+Figure1e_same_method_GSE286068,Full and donor-omission AUCs use primary multiroot DPT and the same trajectory-role endpoints.,True
+external_projection_state_order_and_endpoint_auc,"External validation fields are state_order_spearman and terminal_vs_root_auc, exported in Table 3.",True
+cohort_analysis_roles,"Two disease discovery cohorts, three trajectory cohorts and one external projection cohort.",True
+postdecont_expression_filter_GSE194078,"Input / retained / removed counts: (137903, 137108, 795); separate from doublet-union singlets.",True
+postdecont_expression_filter_GSE286068,"Input / retained / removed counts: (22825, 22756, 69); separate from doublet-union singlets.",True
+precursor_three_decimal_rounding,Mean cohort precursor excess rounds directly to 0.201 at three decimals.,True
+cohort_GRN_and_distinct_IRF1_tests,Whole-cohort GRNs; expected-direction and shuffled-network specificity statistics remain distinct.,True
+published_response_denominator_Csf2ra,66/72 published mouse genes; 61 one-to-one mapped genes are not the denominator.,True
+published_response_denominator_Ifngr1,104/105 published mouse genes; 79 one-to-one mapped genes are not the denominator.,True
+published_response_denominator_Tgfbr1,84/88 published mouse genes; 82 one-to-one mapped genes are not the denominator.,True
+published_response_denominator_Tnfrsf1a,29/31 published mouse genes; 27 one-to-one mapped genes are not the denominator.,True

@@ -54,7 +54,9 @@ and SHA-256 values. The external human cohort contains new-data subseries
 GSE327243 and GSE328264. The in vivo CRISPR source files are identified in their
 external source manifest.
 
-`ANALYSIS_WORKFLOW.json` defines the 33 downstream analysis commands.
+`ANALYSIS_WORKFLOW.json` defines the 34 downstream analysis commands, including
+`trajectory_endpoint_auc`, which exports endpoint AUCs directly from saved
+multiroot DPT values without rebuilding the trajectory graphs.
 `RUN_ORDER.csv` records the runtimes, arguments, and random seeds for analysis,
 figure, table, and validation steps. Exact enumeration is used where feasible;
 Monte Carlo tests and docking use fixed recorded seeds. Plot jitter affects

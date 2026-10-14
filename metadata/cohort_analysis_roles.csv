@@ -1,0 +1,5 @@
+dataset,paired_PBMC_CSF_root_reference,independent_trajectory_reconstruction,disease_discovery,external_fixed_score_projection,disease_comparison,analysis_scope,source
+GSE138266,True,True,True,False,True,Paired blood-CSF trajectory and MS-control discovery comparison,docs/ANALYSIS_SCOPE.md
+GSE194078,True,True,False,False,False,Trajectory only; non-MS participants have other inflammatory demyelinating diseases,docs/ANALYSIS_SCOPE.md
+GSE286068,False,True,True,False,True,CSF-root trajectory and MS-control discovery comparison,docs/ANALYSIS_SCOPE.md
+GSE328265,False,False,False,True,True,External disease cohort; newly sequenced participants only after exclusion of ten previously published participants,docs/ANALYSIS_SCOPE.md

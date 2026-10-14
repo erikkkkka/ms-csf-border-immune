@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build indexed, submission-ready supplementary table workbooks."""
+"""Build indexed supplementary result workbooks."""
 
 from __future__ import annotations
 
@@ -60,14 +60,19 @@ def specs() -> tuple[WorkbookSpec, ...]:
             "Supplementary Table 1 | Cohorts, sample metadata and quality control",
             "Cohort provenance, sample-level metadata, cell retention, ambient-RNA correction and independent doublet calls.",
             (
+                SheetSpec("Cohort_analysis_roles", "metadata/cohort_analysis_roles.csv", "Cohort eligibility for paired roots, trajectory reconstruction, disease discovery and external projection."),
                 SheetSpec("Cohort_manifest", "metadata/cohort_roles.csv", "Dataset accessions, analysis roles and external-cohort inclusion."),
-                SheetSpec("Discovery_metadata", "metadata/all_geo_sample_metadata.csv", "Harmonized discovery-cohort sample metadata."),
+                SheetSpec("Discovery_metadata", "metadata/all_geo_sample_metadata.csv", "Sample metadata for the three trajectory cohorts; GSE194078 is excluded from disease comparisons."),
                 SheetSpec("External_metadata", "metadata/GSE328265_sample_metadata.csv", "Independent external cohort sample metadata."),
                 SheetSpec("Sample_count_summary", "metadata/sample_count_summary.csv", "Sample and group counts used to audit metadata harmonization."),
-                SheetSpec("QC_GSE138266", "results/qc/GSE138266_cleanup_sample_summary.csv", "Sample-level final QC, DecontX and doublet-union summary."),
-                SheetSpec("QC_GSE194078", "results/qc/GSE194078_cleanup_sample_summary.csv", "Sample-level final QC, DecontX and doublet-union summary."),
-                SheetSpec("QC_GSE286068", "results/qc/GSE286068_cleanup_sample_summary.csv", "Sample-level final QC, DecontX and doublet-union summary."),
-                SheetSpec("QC_GSE328265", "results/qc/GSE328265_cleanup_sample_summary.csv", "Sample-level final QC, DecontX and doublet-union summary."),
+                SheetSpec("QC_GSE138266", "results/qc/GSE138266_cleanup_sample_summary.csv", "Sample-level doublet-union singlet counts and DecontX estimates, before post-decontamination expression filtering."),
+                SheetSpec("QC_GSE194078", "results/qc/GSE194078_cleanup_sample_summary.csv", "Sample-level doublet-union singlet counts and DecontX estimates, before post-decontamination expression filtering."),
+                SheetSpec("QC_GSE286068", "results/qc/GSE286068_cleanup_sample_summary.csv", "Sample-level doublet-union singlet counts and DecontX estimates, before post-decontamination expression filtering."),
+                SheetSpec("QC_GSE328265", "results/qc/GSE328265_cleanup_sample_summary.csv", "Sample-level doublet-union singlet counts and DecontX estimates, before post-decontamination expression filtering."),
+                SheetSpec("Postdecont_expression_QC", (
+                    "results/qc/GSE194078_postdecont_qc_summary.csv",
+                    "results/qc/GSE286068_postdecont_qc_summary.csv",
+                ), "Sample-level expression filtering after DecontX for GSE194078 and GSE286068; distinct from doublet-union singlet retention."),
             ),
         ),
         WorkbookSpec(
@@ -106,16 +111,19 @@ def specs() -> tuple[WorkbookSpec, ...]:
             (
                 SheetSpec("Continuum_sampling", "results/trajectory/continuum_sampling_ledger.csv", "Cells and donors eligible for continuum inference."),
                 SheetSpec("Continuum_states", "results/trajectory/continuum_state_summary.csv", "State-level trajectory summary."),
-                SheetSpec("Trajectory_topology", "results/trajectory/continuum_topology_qc.csv", "Root-to-terminal topology audit."),
-                SheetSpec("Method_concordance", "results/trajectory/consensus_method_concordance.csv", "Within-donor concordance of trajectory representations."),
+                SheetSpec("Trajectory_topology", "results/trajectory/continuum_topology_qc.csv", "Single-root DPT and independent topology diagnostics; separate from the multiroot Figure 1e baseline."),
+                SheetSpec("Method_concordance", "results/trajectory/consensus_method_concordance.csv", "Within-cohort cell-level Spearman correlations among four trajectory representations; 48 entries from three 4-by-4 matrices, not donor comparisons."),
+                SheetSpec("Multiroot_endpoint_AUC", "results/trajectory/full_multiroot_endpoint_auc.csv", "Full-cohort multiroot DPT endpoint AUCs from saved cell scores; primary representation supplies the Figure 1e baseline."),
+                SheetSpec("External_projection_topology", "results/external_validation/GSE328265_two_axis_projection/external_projection_topology.csv", "External fixed-score projection: correlation with annotated state ordering and classical-monocyte versus BAM-like endpoint AUC."),
                 SheetSpec("Donor_jackknife", "results/trajectory/trajectory_donor_jackknife.csv", "Leave-one-donor trajectory reconstruction audit."),
-                SheetSpec("Multiroot_audit", "results/trajectory/multiroot_DPT_qc.csv", "Sensitivity to a multi-donor root definition."),
+                SheetSpec("Multiroot_audit", "results/trajectory/multiroot_DPT_qc.csv", "Multi-donor-root DPT: gene-set concordance and correlations with annotated state ordering."),
                 SheetSpec("Two_axis_donors", "results/two_axis/two_axis_donor_scores.csv", "Donor-level differentiation, activation residual and decoupling scores."),
                 SheetSpec("Two_axis_disease", "results/two_axis/two_axis_disease_tests.csv", "Within-cohort disease tests for the two-axis endpoints."),
-                SheetSpec("Two_axis_meta", "results/two_axis/two_axis_meta_tests.csv", "Cross-cohort two-axis meta-analysis."),
-                SheetSpec("Threshold_grid", "results/two_axis/decoupling_threshold_meta_grid.csv", "Prespecified decoupling-threshold sensitivity grid."),
+                SheetSpec("Two_axis_meta", "results/external_validation/GSE328265_two_axis_projection/three_cohort_two_axis_meta.csv", "Primary disease meta-analysis across GSE138266, GSE286068 and new GSE328265 participants; BH correction across the two prespecified endpoints."),
+                SheetSpec("Two_axis_meta_discovery", "results/two_axis/two_axis_meta_tests.csv", "Discovery-only two-cohort meta-analysis across 11 two-axis endpoints; BH correction across this 11-test family."),
+                SheetSpec("Threshold_grid", "results/two_axis/decoupling_threshold_meta_grid.csv", "Decoupling-threshold sensitivity grid in the two disease discovery cohorts, GSE138266 and GSE286068."),
                 SheetSpec("LAM_signature_ledger", "results/cross_species_lam/meningeal_LAM_signature_ledger.csv", "Mouse program membership and human ortholog ledger."),
-                SheetSpec("LAM_availability", "results/cross_species_lam/LAM_signature_availability.csv", "Per-cohort availability of ortholog-mapped LAM genes."),
+                SheetSpec("LAM_availability", "results/cross_species_lam/LAM_signature_availability.csv", "Per-cohort availability of requested scoring genes in the human LAM and ortholog-mapped mouse programs."),
                 SheetSpec("LAM_donor_scores", "results/cross_species_lam/LAM_donor_scores.csv", "Donor-level raw and differentiation-adjusted LAM program scores."),
                 SheetSpec("LAM_pair_tests", "results/cross_species_lam/LAM_decoupled_pair_tests.csv", "Within-cohort donor-paired decoupled-state LAM tests."),
                 SheetSpec("LAM_meta", "results/cross_species_lam/LAM_decoupled_meta.csv", "Cross-cohort LAM program meta-analysis."),
@@ -209,6 +217,8 @@ def specs() -> tuple[WorkbookSpec, ...]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--workbook", action="append", choices=[spec.filename for spec in specs()], help="Rebuild only selected workbooks, retaining other workbooks and their manifest records.")
+    parser.add_argument("--refresh-manifests-only", action="store_true", help="Refresh provenance for already-exported workbooks without rewriting XLSX files.")
     return parser.parse_args()
 
 
@@ -385,9 +395,23 @@ def create_workbook(root: Path, output: Path, spec: WorkbookSpec) -> list[dict[s
     return [dict(item, workbook=spec.filename) for item in sheet_rows]
 
 
+def exported_source_records(root: Path, spec: WorkbookSpec) -> list[dict[str, object]]:
+    records = []
+    for sheet in spec.sheets:
+        frame, source_text = read_sheet(root, sheet)
+        paths = sheet.source if isinstance(sheet.source, tuple) else (sheet.source,)
+        records.append({
+            "sheet": sheet.name, "description": sheet.description, "source": source_text,
+            "rows": len(frame), "columns": len(frame.columns),
+            "source_sha256": "; ".join(sha256(root / path) for path in paths),
+            "workbook": spec.filename,
+        })
+    return records
+
+
 def write_index(output: Path, workbook_specs: tuple[WorkbookSpec, ...], manifest: pd.DataFrame) -> None:
     lines = [
-        "# Supplementary tables index", "", "Generated: 2026-09-03", "",
+        "# Supplementary tables index", "",
         "Each workbook contains an Overview sheet with scope, source paths, row counts and source-file SHA-256 digests. Data sheets are static, filterable exports with frozen headers; no statistical value is recalculated in Excel.", "",
     ]
     for number, spec in enumerate(workbook_specs, 1):
@@ -407,15 +431,48 @@ def main() -> None:
     output = root / "supplementary"
     output.mkdir(parents=True, exist_ok=True)
     workbook_specs = specs()
+    selected = set(args.workbook or [spec.filename for spec in workbook_specs])
+    if args.workbook:
+        source_manifest = pd.read_csv(output / "SUPPLEMENTARY_SOURCE_MANIFEST.csv")
+        recorded = pd.read_csv(output / "SUPPLEMENTARY_WORKBOOK_MANIFEST.csv")
+        retained_workbooks = {
+            row["workbook"]: row for row in recorded.to_dict("records")
+            if row["workbook"] not in selected
+        }
+        for filename, row in retained_workbooks.items():
+            if sha256(output / filename) != row["sha256"]:
+                raise ValueError(f"Unselected workbook differs from its manifest: {filename}")
+    else:
+        source_manifest = pd.DataFrame()
+        retained_workbooks = {}
     records = []
     for workbook_spec in workbook_specs:
-        records.extend(create_workbook(root, output, workbook_spec))
-        print(f"Built {workbook_spec.filename}", flush=True)
-    source_manifest = pd.DataFrame(records)
+        if workbook_spec.filename not in selected:
+            continue
+        if args.refresh_manifests_only:
+            if not (output / workbook_spec.filename).is_file():
+                raise FileNotFoundError(output / workbook_spec.filename)
+            records.extend(exported_source_records(root, workbook_spec))
+            print(f"Refreshed provenance: {workbook_spec.filename}", flush=True)
+        else:
+            records.extend(create_workbook(root, output, workbook_spec))
+            print(f"Built {workbook_spec.filename}", flush=True)
+    if args.workbook:
+        retained_sources = source_manifest.loc[~source_manifest.workbook.isin(selected)]
+        source_manifest = pd.concat([retained_sources, pd.DataFrame(records)], ignore_index=True)
+        order = {spec.filename: index for index, spec in enumerate(workbook_specs)}
+        source_manifest = source_manifest.iloc[
+            source_manifest.workbook.map(order).sort_values(kind="stable").index
+        ].reset_index(drop=True)
+    else:
+        source_manifest = pd.DataFrame(records)
     source_manifest.to_csv(output / "SUPPLEMENTARY_SOURCE_MANIFEST.csv", index=False)
     write_index(output, workbook_specs, source_manifest)
     workbook_manifest = []
     for workbook_spec in workbook_specs:
+        if workbook_spec.filename not in selected:
+            workbook_manifest.append(retained_workbooks[workbook_spec.filename])
+            continue
         path = output / workbook_spec.filename
         workbook_manifest.append({
             "workbook": workbook_spec.filename,

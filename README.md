@@ -3,13 +3,17 @@
 Analysis code and processed data supporting **Inflammatory activation is uncoupled from
 BAM-like differentiation in multiple sclerosis cerebrospinal fluid**.
 
-The `v0.1.0` release contains analysis scripts, processed single-cell checkpoints,
-complete statistical results, and figure source tables.
+The `v0.1.1` release contains analysis scripts, complete statistical results, and
+figure source tables. It updates the method-matched trajectory AUCs, regulatory
+network descriptions, and supplementary exports described in `docs/ANALYSIS_SCOPE.md`.
 
 ## Download
 
-The small files are tracked in this repository. Large processed matrices and AnnData
-objects are attached to the [v0.1.0 release](https://github.com/erikkkkka/ms-csf-border-immune/releases/tag/v0.1.0):
+The small files are tracked in this repository and packaged in the
+[v0.1.1 release](https://github.com/erikkkkka/ms-csf-border-immune/releases/tag/v0.1.1).
+The four unchanged processed-cohort archives remain attached to
+[v0.1.0](https://github.com/erikkkkka/ms-csf-border-immune/releases/tag/v0.1.0).
+The current download manifest links to the appropriate version of every archive.
 
 | Asset | Contents |
 |---|---|
@@ -25,7 +29,9 @@ Extract data assets into the repository root, preserving their directory paths. 
 archives do not contain another enclosing project directory. Validate downloads with
 `reproducibility/RELEASE_ASSET_MANIFEST.csv`; individual processed-file hashes are in
 `reproducibility/PROCESSED_DATA_MANIFEST.csv`.
-`DOWNLOAD_MANIFEST.csv` lists all seven ZIP assets; `SHA256SUMS.txt` provides their checksums.
+The release attachment `DOWNLOAD_MANIFEST.csv` lists all seven ZIP download URLs;
+`SHA256SUMS.txt` provides their checksums. The four processed archives retain the
+same file sizes and SHA-256 digests as in `v0.1.0`.
 
 ```bash
 python release_tools/verify_release.py --root .

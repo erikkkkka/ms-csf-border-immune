@@ -1,7 +1,5 @@
 # Supplementary tables index
 
-Generated: 2026-09-03
-
 Each workbook contains an Overview sheet with scope, source paths, row counts and source-file SHA-256 digests. Data sheets are static, filterable exports with frozen headers; no statistical value is recalculated in Excel.
 
 ## Supplementary Table 1
@@ -12,7 +10,7 @@ Cohort provenance, sample-level metadata, cell retention, ambient-RNA correction
 
 Workbook: `Supplementary_Table_1_Cohorts_and_QC.xlsx`
 
-Sheets: Cohort_manifest, Discovery_metadata, External_metadata, Sample_count_summary, QC_GSE138266, QC_GSE194078, QC_GSE286068, QC_GSE328265.
+Sheets: Cohort_analysis_roles, Cohort_manifest, Discovery_metadata, External_metadata, Sample_count_summary, QC_GSE138266, QC_GSE194078, QC_GSE286068, QC_GSE328265, Postdecont_expression_QC.
 
 ## Supplementary Table 2
 
@@ -32,7 +30,7 @@ Trajectory robustness, donor-level differentiation/inflammation coordinates and 
 
 Workbook: `Supplementary_Table_3_Trajectory_TwoAxis_LAM.xlsx`
 
-Sheets: Continuum_sampling, Continuum_states, Trajectory_topology, Method_concordance, Donor_jackknife, Multiroot_audit, Two_axis_donors, Two_axis_disease, Two_axis_meta, Threshold_grid, LAM_signature_ledger, LAM_availability, LAM_donor_scores, LAM_pair_tests, LAM_meta.
+Sheets: Continuum_sampling, Continuum_states, Trajectory_topology, Method_concordance, Multiroot_endpoint_AUC, External_projection_topology, Donor_jackknife, Multiroot_audit, Two_axis_donors, Two_axis_disease, Two_axis_meta, Two_axis_meta_discovery, Threshold_grid, LAM_signature_ledger, LAM_availability, LAM_donor_scores, LAM_pair_tests, LAM_meta.
 
 ## Supplementary Table 4
 

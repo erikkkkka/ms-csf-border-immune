@@ -461,14 +461,18 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
     clean_axis(ax_d)
 
     jk = jackknife[jackknife.representation.eq("primary")]
+    multiroot = pd.read_csv(root / "results/trajectory/full_multiroot_endpoint_auc.csv")
+    multiroot = multiroot.loc[multiroot.representation.eq("primary")].set_index("dataset")
     robustness_rows = []
     for dataset in topology.dataset:
         values = jk.loc[jk.dataset.eq(dataset), "rebuilt_terminal_vs_root_auc"].to_numpy()
-        full = float(topology.loc[topology.dataset.eq(dataset), "primary_terminal_vs_root_auc"].iloc[0])
+        full = float(multiroot.loc[dataset, "full_terminal_vs_root_auc"])
         robustness_rows.append({
             "dataset": dataset, "full_auc": full, "jackknife_min": values.min(),
             "jackknife_median": np.median(values), "jackknife_max": values.max(),
             "n_leave_one_donor_runs": len(values),
+            "representation": "primary", "method": "multiroot DPT",
+            "full_score_column": "dpt_multiroot_primary",
         })
     robust = pd.DataFrame(robustness_rows)
     export_source(robust, source, "Fig1e_trajectory_robustness")
@@ -476,7 +480,7 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
     for yi, row in zip(y, robust.itertuples()):
         ax_e.plot([row.jackknife_min, row.jackknife_max], [yi, yi], color=COLORS["light_grey"], lw=3)
         ax_e.scatter(row.jackknife_median, yi, s=18, color=COLORS["entry"], zorder=3, label="donor jackknife" if yi == y[0] else None)
-        ax_e.scatter(row.full_auc, yi, s=24, marker="D", color=COLORS["ink"], zorder=4, label="full model" if yi == y[0] else None)
+        ax_e.scatter(row.full_auc, yi, s=24, marker="D", color=COLORS["ink"], zorder=4, label="all donors" if yi == y[0] else None)
     ax_e.axvline(0.5, color=COLORS["grey"], ls="--", lw=0.7)
     ax_e.set_yticks(y, robust.dataset)
     ax_e.set_xlabel("High-confidence BAM endpoint versus root AUC")
@@ -693,7 +697,7 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
     sender = pd.read_csv(root / "results/niche_regulator/sender_to_LAM_outcome_associations.csv")
 
     fig = plt.figure(figsize=(183 * MM, 172 * MM))
-    ax_a = fig.add_axes([0.080, 0.780, 0.860, 0.160])
+    ax_a = fig.add_axes([0.080, 0.735, 0.860, 0.205])
     ax_b = fig.add_axes([0.135, 0.420, 0.295, 0.240])
     ax_c = fig.add_axes([0.585, 0.420, 0.355, 0.240])
     ax_d = fig.add_axes([0.225, 0.105, 0.235, 0.220])
@@ -701,21 +705,50 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
 
     ax_a.set_axis_off()
     add_panel_label(ax_a, "a", x=-0.06, y=1.04)
-    draw_box(ax_a, (0.02, 0.67), 0.19, 0.17, "IFNGR1/2\nreceiver state", COLORS["ms_light"], weight="bold")
-    draw_box(ax_a, (0.02, 0.37), 0.19, 0.17, "TNFRSF1A/B\nreceiver state", COLORS["transition_light"], weight="bold")
-    draw_box(ax_a, (0.02, 0.07), 0.19, 0.17, "CSF2\nT-cell sender score", COLORS["pale_grey"], weight="bold")
-    draw_box(ax_a, (0.38, 0.59), 0.22, 0.24, "IRF1 / STAT1\ninflammatory lock", COLORS["ms_light"], weight="bold")
-    draw_box(ax_a, (0.38, 0.29), 0.22, 0.18, "NFKB1\nrelay", COLORS["transition_light"], weight="bold")
-    draw_box(ax_a, (0.72, 0.54), 0.25, 0.27, "GM-CSF-responsive\ndecoupled\nstate", COLORS["ms_light"], fontsize=5.5, weight="bold")
-    draw_box(ax_a, (0.72, 0.11), 0.25, 0.24, "PPARG / MAF\nBAM-like\nadaptation", COLORS["terminal_light"], weight="bold")
-    arrow_axes(ax_a, (0.21, 0.75), (0.38, 0.70), COLORS["ms"])
-    arrow_axes(ax_a, (0.21, 0.45), (0.38, 0.38), COLORS["transition"])
-    arrow_axes(ax_a, (0.60, 0.71), (0.72, 0.68), COLORS["ms"])
-    arrow_axes(ax_a, (0.60, 0.38), (0.72, 0.61), COLORS["transition"])
-    ax_a.plot([0.21, 0.28, 0.28, 0.68], [0.15, 0.15, 0.53, 0.53],
-              transform=ax_a.transAxes, color=COLORS["grey"], lw=0.55)
-    arrow_axes(ax_a, (0.68, 0.53), (0.72, 0.63), COLORS["grey"], lw=0.55)
-    ax_a.set_title("Receiver-side circuit architecture", loc="left", fontweight="bold")
+    diagram_colors = {
+        "ifn_fill": "#FAF3F3", "ifn_edge": "#A75F65",
+        "tnf_fill": "#FAF7F1", "tnf_edge": "#AA8452",
+        "sender_fill": "#F5F6F7", "sender_edge": "#829098",
+        "state_fill": "#F4E6E8", "state_edge": "#B57379",
+        "adaptation_fill": "#EEF5F2", "adaptation_edge": "#3F8C7A",
+        "receiver_arrow": "#687378", "sender_arrow": "#8C949B",
+    }
+    diagram_nodes = [
+        ((0.025, 0.695), 0.210, 0.190, "IFNGR1/IFNGR2", "ifn"),
+        ((0.025, 0.375), 0.210, 0.190, "TNFRSF1A/TNFRSF1B", "tnf"),
+        ((0.025, 0.055), 0.210, 0.190, "CSF2 (T cells)", "sender"),
+        ((0.365, 0.695), 0.220, 0.190, "IRF1 / STAT1", "ifn"),
+        ((0.365, 0.375), 0.220, 0.190, "NFKB1", "tnf"),
+        ((0.790, 0.595), 0.200, 0.285, "Elevated inflammation", "state"),
+        ((0.790, 0.085), 0.200, 0.255, "PPARG / MAF\nBAM-like program", "adaptation"),
+    ]
+    for xy, width, height, text, family in diagram_nodes:
+        draw_box(
+            ax_a, xy, width, height, text, diagram_colors[f"{family}_fill"],
+            edgecolor=diagram_colors[f"{family}_edge"], weight="bold",
+        )
+
+    def circuit_arrow(points: list[tuple[float, float]], color: str) -> None:
+        path = mpl.path.Path(points, [mpl.path.Path.MOVETO] + [mpl.path.Path.LINETO] * (len(points) - 1))
+        ax_a.add_patch(patches.FancyArrowPatch(
+            path=path, arrowstyle="-|>", mutation_scale=7, linewidth=0.8,
+            color=color, capstyle="round", joinstyle="round",
+            transform=ax_a.transAxes, zorder=1,
+        ))
+
+    # Separate entry ports keep the receiver and sender routes non-crossing.
+    for points in [
+        [(0.247, 0.790), (0.353, 0.790)],
+        [(0.247, 0.470), (0.353, 0.470)],
+        [(0.599, 0.790), (0.776, 0.790)],
+        [(0.599, 0.470), (0.680, 0.470), (0.680, 0.695), (0.776, 0.695)],
+    ]:
+        circuit_arrow(points, diagram_colors["receiver_arrow"])
+    circuit_arrow(
+        [(0.247, 0.150), (0.740, 0.150), (0.740, 0.620), (0.776, 0.620)],
+        diagram_colors["sender_arrow"],
+    )
+    ax_a.set_title("Receptor and regulator model", loc="left", fontweight="bold")
 
     selected = [
         ("receptor", "IFNG"), ("receptor", "TNF"), ("receptor", "CSF2"),
@@ -1234,7 +1267,8 @@ Statistical units:
 - Figures 1-3: cells are displayed for topology, but disease tests and meta-effects use donors.
 - Figure 4: donor-level in vivo CRISPR signature effects are combined across three
   inflammatory-state cohorts; trajectory/LAM endpoints additionally include the
-  trajectory-only cohort. Virtual downstream effects use donor-specific GRNs.
+  trajectory-only cohort. Virtual downstream effects use fitted whole-cohort GRNs,
+  with effects aggregated by donor.
 - Figure 5: each point in the screen panel is one compound-dose perturbation profile.
 
 Annotation scope:
