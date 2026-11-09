@@ -1,0 +1,7 @@
+gene,cell_type,rsid,lead_variant_GRCh38,planned_role
+IFNGR1,CD14_Mono,rs2234711,6:137219383:A:G,primary
+IRF1,CD14_Mono,rs201023942,5:132515077:T:C,comparison
+STAT1,CD14_Mono,rs3024936,2:191030650:G:C,comparison
+IFNGR1,CD16_Mono,rs2234711,6:137219383:A:G,primary
+IRF1,CD16_Mono,rs182386538,5:132508327:T:G,comparison
+STAT1,CD16_Mono,rs925847,2:191032814:C:T,comparison

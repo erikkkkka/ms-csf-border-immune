@@ -1,0 +1,83 @@
+#!/usr/bin/env Rscript
+aa<-commandArgs(FALSE);script<-sub('^--file=','',aa[grepl('^--file=',aa)])
+root<-normalizePath(file.path(dirname(script),'..'))
+suppressPackageStartupMessages(library(data.table));suppressPackageStartupMessages(library(jsonlite))
+suppressPackageStartupMessages(library(susieR));suppressPackageStartupMessages(library(coloc))
+a<-commandArgs(TRUE);window<-if(length(a))a[1]else '100kb';gene<-if(length(a)>1)a[2]else 'IFNGR1'
+set.seed(20261104)
+warnings_seen<-character()
+handle<-function(expr,label)withCallingHandlers(expr,warning=function(w){warnings_seen<<-c(warnings_seen,paste(label,conditionMessage(w)));invokeRestart('muffleWarning')})
+thin_decomp<-function(X){
+  s<-svd(X,nu=0,nv=min(nrow(X),ncol(X)));d<-s$d^2/nrow(X);keep<-d>=1e-8
+  list(d=d[keep],v=s$v[,keep,drop=FALSE],p=ncol(X))
+}
+thin_s<-function(z,parts,n){
+  z<-sqrt((n-1)/(z^2+n-2))*z
+  q<-as.vector(crossprod(parts$v,z));null_sq<-max(0,sum(z^2)-sum(q^2));null_rank<-parts$p-length(parts$d)
+  fn<-function(s){v<-(1-s)*parts$d+s
+    .5*(sum(log(v))+sum(q^2/v)+null_rank*log(s)+null_sq/s)}
+  optim(.5,fn,method='Brent',lower=0,upper=1)$par
+}
+fits<-list();signals<-list();pip_tables<-list();fit_status<-list()
+for(label in c('CD14_Mono_expression','CD16_Mono_expression','MS')){
+  folder<-file.path(root,'work',paste0(window,'_',gene,'_',label))
+  if(!file.exists(file.path(folder,'statistics.tsv')))next
+  h<-fread(file.path(folder,'statistics.tsv'));meta<-fromJSON(file.path(folder,'metadata.json'))
+  p<-nrow(h);nref<-meta$n_reference_samples
+  con<-file(file.path(folder,'LD.bin'),'rb');v<-readBin(con,'double',n=p*p,size=8,endian='little');close(con)
+  stopifnot(length(v)==p*p);R<-matrix(v,nrow=p,byrow=TRUE,dimnames=list(h$snp_GRCh37,h$snp_GRCh37));rm(v)
+  con<-file(file.path(folder,'reference_standardized_genotypes.bin'),'rb');v<-readBin(con,'double',n=nref*p,size=8,endian='little');close(con)
+  X<-matrix(v,nrow=nref,byrow=TRUE);rm(v)
+  stopifnot(max(abs(R-t(R)))<1e-10,max(abs(diag(R)-1))<1e-10,all(is.finite(R)),all(is.finite(X)))
+  cat('LD_SVD',window,gene,label,p,'\n');flush.console()
+  n<-unique(h$N_model);stopifnot(length(n)==1)
+  parts<-thin_decomp(X);lambda<-thin_s(h$z,parts,n)
+  rm(X,parts);gc(FALSE)
+  cat('FIT',window,gene,label,'p',p,'N',n,'LD_s',lambda,'\n');flush.console()
+  z<-h$z;names(z)<-h$snp_GRCh37
+  fit<-tryCatch(handle(susie_rss(z=z,R=R,n=n,L=10,coverage=.95,min_abs_corr=.5,
+                    estimate_residual_variance=FALSE,estimate_prior_variance=TRUE,max_iter=1000,refine=FALSE),label),error=function(e)e)
+  if(inherits(fit,'error')){
+    fit_status[[length(fit_status)+1]]<-data.table(window=window,gene=gene,trait=label,status=paste('fit_error',conditionMessage(fit)),
+      n_variants=p,N_model=n,converged=FALSE,n_credible_sets=NA_integer_,LD_mismatch_s=lambda,niter=NA_integer_)
+    rm(R);gc(FALSE);next
+  }
+  colnames(fit$lbf_variable)<-h$snp_GRCh37;colnames(fit$alpha)<-h$snp_GRCh37
+  saveRDS(fit,file.path(folder,'full_trait_susie_fit.rds'))
+  fits[[label]]<-fit
+  fit_status[[length(fit_status)+1]]<-data.table(window=window,gene=gene,trait=label,
+    status=if(fit$converged)'converged'else'not_converged',n_variants=p,N_model=n,converged=fit$converged,
+    n_credible_sets=length(fit$sets$cs),LD_mismatch_s=lambda,niter=fit$niter)
+  pip_tables[[length(pip_tables)+1]]<-data.table(window=window,gene=gene,trait=label,snp_GRCh37=h$snp_GRCh37,
+    variant_GRCh38=h$variant_GRCh38,marginal_z=h$z,PIP=susie_get_pip(fit))
+  if(length(fit$sets$cs))for(j in seq_along(fit$sets$cs)){
+    component<-fit$sets$cs_index[j];members<-fit$sets$cs[[j]];top<-which.max(fit$alpha[component,])
+    signals[[length(signals)+1]]<-data.table(window=window,gene=gene,trait=label,credible_set=names(fit$sets$cs)[j],
+      component=component,n_variants=length(members),top_SNP_GRCh37=h$snp_GRCh37[top],
+      top_variant_GRCh38=h$variant_GRCh38[top],top_PIP=susie_get_pip(fit)[top],
+      component_log_BF=fit$lbf[component],min_abs_corr=fit$sets$purity$min.abs.corr[j],
+      members_GRCh37=paste(h$snp_GRCh37[members],collapse=';'))
+  }
+  cat('DONE',label,'converged',fit$converged,'CS',length(fit$sets$cs),'niter',fit$niter,'\n');flush.console()
+  fwrite(rbindlist(fit_status,fill=TRUE),file.path(root,'results',paste0(window,'_',gene,'_susie_fit_summary.csv')))
+  if(length(signals))fwrite(rbindlist(signals,fill=TRUE),file.path(root,'results',paste0(window,'_',gene,'_susie_credible_sets.csv')))
+  rm(R);gc(FALSE)
+}
+pairs<-list()
+for(label in c('CD14_Mono_expression','CD16_Mono_expression')){
+  d<-fits[['MS']];e<-fits[[label]]
+  if(is.null(d)||is.null(e)||!d$converged||!e$converged){
+    pairs[[length(pairs)+1]]<-data.table(window=window,gene=gene,cell_type=sub('_expression$','',label),status='fit_unresolved')
+    next
+  }
+  cc<-handle(coloc.susie(d,e,p1=1e-4,p2=1e-4,p12=1e-5),paste(label,'coloc'))
+  if(is.list(cc)&&!is.null(cc$summary)&&nrow(cc$summary)){
+    s<-as.data.table(cc$summary);s[,`:=`(window=window,gene=gene,cell_type=sub('_expression$','',label),
+      trait1='MS',trait2='expression',status='estimated_pair')]
+    pairs[[length(pairs)+1]]<-s
+    saveRDS(cc,file.path(root,'work',paste0(window,'_',gene,'_',label),'full_trait_coloc_susie.rds'))
+  }else pairs[[length(pairs)+1]]<-data.table(window=window,gene=gene,cell_type=sub('_expression$','',label),
+      status='no_overlapping_credible_sets')
+}
+fwrite(rbindlist(pairs,fill=TRUE),file.path(root,'results',paste0(window,'_',gene,'_coloc_susie.csv')))
+if(length(pip_tables))fwrite(rbindlist(pip_tables,fill=TRUE),file.path(root,'work',paste0(window,'_',gene,'_susie_variant_pip.csv')))
