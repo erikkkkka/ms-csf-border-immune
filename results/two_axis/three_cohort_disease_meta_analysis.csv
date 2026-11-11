@@ -1,0 +1,13 @@
+calibration,outcome,z,p,fdr,concordant_direction
+Held-out donor calibration,IFN continuous index,1.3492603989775505,0.17725334067552156,0.2363377875673621,True
+Held-out donor calibration,IFN elevated inflammation fraction,1.0642173937397605,0.2872302292253087,0.2872302292253087,False
+Held-out donor calibration,MHC-I continuous index,2.7594271670185107,0.005790279249696947,0.011580558499393894,True
+Held-out donor calibration,MHC-I elevated inflammation fraction,3.8728439451295746,0.0001075727106831652,0.0004612911939513622,True
+Held-out donor calibration,Continuous inflammatory index,2.50812131096395,0.012137498942430986,0.012137498942430986,True
+Held-out donor calibration,Elevated inflammation fraction,2.893229461348103,0.0038130261911845263,0.005084034921579369,True
+Refitted calibration,IFN continuous index,1.927169458937714,0.05395851477013694,0.08633362363221911,True
+Refitted calibration,IFN elevated inflammation fraction,1.1935906062843729,0.23263815032421264,0.26587217179910017,True
+Refitted calibration,MHC-I continuous index,3.221429222797412,0.0012755296276183653,0.003401412340315641,True
+Refitted calibration,MHC-I elevated inflammation fraction,3.85586144028312,0.00011532279848784055,0.0004612911939513622,True
+Refitted calibration,Continuous inflammatory index,3.1661672170832205,0.0015446197216777127,0.004230040860772689,True
+Refitted calibration,Elevated inflammation fraction,3.073586950855893,0.0021150204303863446,0.004230040860772689,True
