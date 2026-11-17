@@ -18,3 +18,12 @@ data/processed/
 public_release/
 qa_generated/
 reproduced_figures/
+
+/data/external_validation/Ban/
+/data/external_validation/GSE153056/
+/results/external_validation/Ban/**/donor_coverage.csv
+/results/external_validation/Ban/**/primary_donor_scores.csv
+/results/external_validation/Ban/signature_donor_effects.csv
+/results/external_validation/Ban/signature_components/donor_effects.csv
+/results/external_validation/Ban/sensitivity/robustness_donor_effects.csv
+/results/external_validation/Ban/sensitivity/*leave_one_donor_out.csv

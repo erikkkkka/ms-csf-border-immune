@@ -1,0 +1,18 @@
+{
+  "gene_to_feature": {
+    "ACOD1": "IRG1",
+    "CALHM6": "FAM26F",
+    "PLAAT3": "PLA2G16",
+    "SELENOM": "SELM",
+    "TMEM273": "C10orf128",
+    "TAP2": "TAP2.1"
+  },
+  "sources": {
+    "ACOD1": "https://www.uniprot.org/uniprotkb/A6NK06",
+    "CALHM6": "https://www.ncbi.nlm.nih.gov/gtr/genes/441168/",
+    "PLAAT3": "https://www.ncbi.nlm.nih.gov/gene/11145/",
+    "SELENOM": "https://www.ncbi.nlm.nih.gov/gene/140606",
+    "TMEM273": "https://www.ncbi.nlm.nih.gov/gene/170371",
+    "TAP2": "https://www.uniprot.org/uniprotkb/Q5HY71"
+  }
+}

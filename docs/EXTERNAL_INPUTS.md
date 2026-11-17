@@ -4,6 +4,8 @@ Figure regeneration uses the released result tables, two attributed ChEMBL
 snapshots, and the GSE138266 continuum and GSE328265 two-axis AnnData objects from
 the processed-data assets. It does not require downloading raw sequencing data or
 external databases.
+Figure 3 uses the deposited tables. Its [Ban and GSE153056 source inputs](INDEPENDENT_CSF_AND_IFNGR1.md) are needed to recompute those results.
+
 Full downstream recomputation requires the original reference inputs below.
 
 | Resource | Required location or generation step |

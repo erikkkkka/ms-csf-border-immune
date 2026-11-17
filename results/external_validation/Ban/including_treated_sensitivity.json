@@ -1,0 +1,115 @@
+{
+  "n_MS": 14,
+  "n_NIND": 10,
+  "group_mean_index": {
+    "MS": 0.26865317011260786,
+    "NIND": 0.08937194530226744
+  },
+  "n_permutations": 9999,
+  "exact_permutation": false,
+  "threshold": 0.4964301402187384,
+  "baseline_fit": {
+    "n_train_donors": 10,
+    "rank": 7,
+    "knot": 0.5940892641737032
+  },
+  "contrasts": {
+    "original_refit": {
+      "bootstrap_valid": 2000,
+      "bootstrap_attempts": 2000,
+      "readouts": {
+        "continuous": {
+          "mean_MS_minus_NIND": 0.17928122481034042,
+          "mean_difference_ci95": [
+            0.07000127227882783,
+            0.3335325120589094
+          ],
+          "cohen_d": 1.0850663569320906,
+          "cohen_d_ci95": [
+            0.6128541520172981,
+            1.7950491947762217
+          ],
+          "p_two_sided": 0.0061
+        },
+        "fraction": {
+          "mean_MS_minus_NIND": 0.15491371603436885,
+          "mean_difference_ci95": [
+            0.08410670389505531,
+            0.2475164347354002
+          ],
+          "cohen_d": 1.3868374437003914,
+          "cohen_d_ci95": [
+            0.8802505090201249,
+            2.258442975981076
+          ],
+          "p_two_sided": 0.0006
+        },
+        "MHC_I_continuous": {
+          "mean_MS_minus_NIND": 0.24189235704465892,
+          "mean_difference_ci95": [
+            0.06610265662894638,
+            0.4824223038556863
+          ],
+          "cohen_d": 0.9339936315906812,
+          "cohen_d_ci95": [
+            0.3571461696498329,
+            1.6792381486988504
+          ],
+          "p_two_sided": 0.0145
+        },
+        "MHC_I_fraction": {
+          "mean_MS_minus_NIND": 0.14739177098264808,
+          "mean_difference_ci95": [
+            0.060197235998670974,
+            0.2683110463229471
+          ],
+          "cohen_d": 1.1261527593886924,
+          "cohen_d_ci95": [
+            0.5954955322049444,
+            2.142423715693813
+          ],
+          "p_two_sided": 0.006
+        },
+        "IFN_continuous": {
+          "mean_MS_minus_NIND": 0.1166700925760219,
+          "mean_difference_ci95": [
+            0.017413779631176123,
+            0.2692715203216654
+          ],
+          "cohen_d": 0.8556286210260028,
+          "cohen_d_ci95": [
+            0.1736159206132814,
+            1.704048187013769
+          ],
+          "p_two_sided": 0.0541
+        },
+        "IFN_fraction": {
+          "mean_MS_minus_NIND": 0.08132835790399212,
+          "mean_difference_ci95": [
+            0.030026215779112953,
+            0.16327097268899857
+          ],
+          "cohen_d": 0.9628489964536308,
+          "cohen_d_ci95": [
+            0.37769496263618735,
+            1.9386004658773888
+          ],
+          "p_two_sided": 0.0437
+        }
+      }
+    }
+  },
+  "topology": {
+    "n_monocytes": 518,
+    "n_macrophages": 1140,
+    "median_projected_monocytes": 0.15621230398069963,
+    "median_projected_macrophages": 0.6562123039806996,
+    "macrophage_vs_monocyte_auc": 0.9903407166565061,
+    "missing_trajectory_genes": [],
+    "zero_detection_genes": []
+  },
+  "donor_omission_range": [
+    0.14152832281577374,
+    0.1996373467545089
+  ]
+}

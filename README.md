@@ -1,6 +1,6 @@
 # MS CSF Border Immune Analysis
 
-Analysis code and processed data for **Inflammatory activity in cerebrospinal fluid myeloid cells from patients with multiple sclerosis exceeds levels expected along the differentiation trajectory toward border-associated macrophage-like states**.
+Analysis code and processed data for **Excess inflammatory activity along a cerebrospinal fluid myeloid continuum in multiple sclerosis**.
 
 ## Download
 
@@ -31,12 +31,16 @@ python release_tools/reproduce_public.py --mode analysis \
 
 See [Genetic analysis of monocyte gene expression](genetic_analysis/README.md) for Mendelian randomization, colocalization and Supplementary Figure S10.
 
+## Independent CSF cohort and IFNGR1 perturbation
+
+[Inputs, reproduction commands and Figure 3 source data](docs/INDEPENDENT_CSF_AND_IFNGR1.md) cover the [Ban cohort](results/external_validation/Ban) and [GSE153056 THP-1 perturbations](results/external_validation/GSE153056). Ban results include the donor inflammatory index, IFNGR1 signature associations, rank scoring, cell-type analyses and donor omission.
+
 ## Additional results
 
 - [GSE133028](results/external_validation/GSE133028) contains donor inflammatory indices and the comparison between relapsing–remitting MS and healthy controls. The comparison at a minimum of 20 cells per donor is descriptive.
 - [GSE308973](results/external_validation/GSE308973) contains donor-level trajectory scores and paired summaries for CSF macrophages and monocytes. The paired comparisons include donors with at least five cells per state.
 - [Disease comparisons](results/two_axis/three_cohort_disease_meta_analysis.csv), [cohort estimates](results/two_axis/cohort_disease_effects.csv) and [cutoff analysis](results/two_axis/inflammation_cutoff_grid.csv) accompany Figure 2 and Supplementary Figure S4.
-- [Network simulation results](results/virtual_perturbation_celloracle/shuffled_network_tests.csv) and the [shared-gene combination effects](results/virtual_perturbation_celloracle_combinations/shared_gene_combination_effects.csv) accompany Figure 4e and Supplementary Figure S8.
+- [Network simulation results](results/virtual_perturbation_celloracle/shuffled_network_tests.csv) and the [shared-gene combination effects](results/virtual_perturbation_celloracle_combinations/shared_gene_combination_effects.csv) accompany Figure 5e and Supplementary Figure S8.
 
 ## Data and licensing
 
