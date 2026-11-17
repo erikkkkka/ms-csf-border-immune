@@ -13,7 +13,7 @@ The analysis uses the [fixed differentiation program](../results/external_valida
 
 ## Reproduce
 
-From the repository root, use Python 3.12 and install the requirements. The plotting command uses the summary tables for Figure 3. Panel a displays medians and interquartile ranges. Running the Ban analysis from the source files adds donor points from the locally generated results.
+From the repository root, use Python 3.12 and install the requirements. The main figure workflow includes Figure 3. The commands below generate Figure 3 on its own from the summary tables. Panel a displays medians and interquartile ranges. Running the Ban analysis from the source files adds donor points from the locally generated results.
 
 ```sh
 python -m pip install -r environments/independent_csf_requirements.txt

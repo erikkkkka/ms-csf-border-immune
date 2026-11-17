@@ -4,7 +4,7 @@ Analysis code and processed data for **Excess inflammatory activity along a cere
 
 ## Download
 
-Use the [download manifest](https://github.com/erikkkkka/ms-csf-border-immune/releases/latest/download/DOWNLOAD_MANIFEST.csv) to obtain the processed cohort archives, analysis results, figure source data and code archives. Extract the archives into the repository root, preserving their directory paths. The manifest lists download URLs and SHA-256 checksums.
+Use the [download manifest](https://github.com/erikkkkka/ms-csf-border-immune/releases/latest/download/DOWNLOAD_MANIFEST.csv) to obtain the processed cohort archives, analysis results, figure source data and code archives. Extract the data archives into the repository root, preserving their directory paths and keeping files already present in the checkout. The manifest lists download URLs and SHA-256 checksums.
 
 ```sh
 python release_tools/verify_release.py --root .
@@ -13,10 +13,19 @@ python release_tools/verify_release.py --root . --require-data
 
 ## Reproduce
 
-Install the environments in `environments/`. For figure regeneration, extract `Processed_GSE138266.zip` and `Processed_GSE328265.zip` first.
+Install the environments in `environments/`. For figure regeneration, extract the results archive, `Processed_GSE138266.zip` and `Processed_GSE328265.zip` first.
 
 ```sh
 python release_tools/reproduce_public.py --mode figures
+```
+
+This command generates Figures 1–6 in `reproduced_figures/main/` and Figures S1–S9 in `reproduced_figures/supplementary/`, using the manuscript numbering. Figure 3 uses the deposited summary tables and adds the donor points when local donor scores are available. Figure S10 uses the genetic analysis workflow below.
+
+To generate the four-panel Figure 1 alone:
+
+```sh
+python scripts/75_generate_manuscript_figures.py --figures 1 --formats pdf \
+  --output-dir reproduced_figures/main --source-dir qa_generated/source_data/main
 ```
 
 To rerun the downstream analyses from the cleaned-cell checkpoints, obtain the [external inputs](docs/EXTERNAL_INPUTS.md) and run:

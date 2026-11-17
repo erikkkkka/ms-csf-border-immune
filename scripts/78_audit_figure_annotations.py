@@ -16,11 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 FIGURE_RULES = {
     "Figure_1_CSF_monocyte_BAM_continuum": {
         "required": [
-            "PBMC monocyte root",
+            "PBMC monocytes",
             "CSF monocyte entry",
-            "C1Q/APOE-high BAM-like pole",
-            "Programs across BAM annotation confidence",
-            "High-confidence BAM endpoint versus root AUC",
+            "BAM-like endpoint",
+            "Programs by annotation confidence",
+            "Endpoint vs root AUC",
         ],
         "forbidden": ["BAM-like intermediate", "BAM-like terminal"],
     },
@@ -39,10 +39,19 @@ FIGURE_RULES = {
             "Unseen cohort",
         ],
     },
-    "Figure_3_receiver_regulatory_analysis": {
+    "Figure_3_Independent_CSF_and_IFNGR1": {
         "required": [
-            "IFNGR1/2 receiver state",
-            "TNFRSF1A/B receiver state",
+            "Independent CSF disease comparison",
+            "Human IFNGR1 perturbation: MHC-I",
+            "Frozen signatures in Ban",
+            "Donor omission with recalibration",
+        ],
+        "forbidden": [],
+    },
+    "Figure_4_receiver_regulatory_analysis": {
+        "required": [
+            "IFNGR1/2",
+            "TNFRSF1A/B",
             "CSF2RA/B",
             "Late - mid trajectory window",
             "CSF T-cell ligand scores",
@@ -56,10 +65,10 @@ FIGURE_RULES = {
             "Circuit priority",
         ],
     },
-    "Figure_4_in_vivo_CRISPR_directional_control": {
+    "Figure_5_in_vivo_CRISPR_directional_control": {
         "required": [
             "In vivo receptor KO",
-            "Frozen human CSF",
+            "Human CSF",
             "IFNGR1 response",
             "Direct KO-like",
             "KO-like inflammatory reversal",
@@ -70,35 +79,35 @@ FIGURE_RULES = {
             "validated therapy",
         ],
     },
-    "Figure_5_transition_aware_chemical_probe": {
+    "Figure_6_transition_aware_chemical_probe": {
         "required": [
             "76 NIBR U2OS profiles",
             "1 phenotypic profile",
             "Only one U2OS profile",
             "PDPK1-pathway comparators",
-            "phenotypic probe",
-            "unresolved",
+            "Genetic target deconvolution",
+            "Unbiased neighbors lack a coherent target class",
         ],
         "forbidden": ["preclinical probe", "PDPK1 controls do not reproduce"],
     },
 }
 
 SOURCE_COLUMNS = {
-    "Fig1d_module_progression.csv": ["stage_display", "annotation_role"],
+    "Fig1c_module_progression.csv": ["stage_display", "annotation_role"],
     "Fig2b_donor_continuous_decoupling.csv": ["validation_role"],
     "Fig2d_external_two_axis_cells.csv": ["validation_role"],
     "Fig2e_cross_species_LAM_cohort_effects.csv": ["endpoint_display", "evidence_type"],
-    "Fig3b_decoupled_receiver_regulator_meta.csv": ["display_label", "molecular_layer"],
-    "Fig3c_regulator_trajectory_dynamics.csv": ["contrast_display", "contrast_definition"],
-    "Fig3d_receiver_circuit_ranking.csv": ["circuit_display", "evidence_scope"],
-    "Fig3e_sender_precursor_associations.csv": ["ligand_display", "sender_cell_type"],
-    "Fig4b_in_vivo_response_bridge.csv": ["perturbation_display", "endpoint_display", "signature_scope"],
-    "Fig4c_IFNGR1_cohort_directionality.csv": ["signature_display", "endpoint_display", "statistical_unit"],
-    "Fig4d_direct_KO_triangulation.csv": ["perturbation_display", "interpretation_scope"],
-    "Fig4e_virtual_downstream_control.csv": ["virtual_perturbation", "endpoint_display", "evidence_role"],
-    "Fig5a_screen_cascade.csv": ["perturbation_cell_line", "screen_role"],
-    "Fig5b_NIBR_profile_screen.csv": ["perturbation_cell_line", "evidence_role"],
-    "Fig5g_developability_gate.csv": ["display_value", "assessment"],
+    "Fig4b_decoupled_receiver_regulator_meta.csv": ["display_label", "molecular_layer"],
+    "Fig4c_regulator_trajectory_dynamics.csv": ["contrast_display", "contrast_definition"],
+    "Fig4d_receiver_circuit_ranking.csv": ["circuit_display", "evidence_scope"],
+    "Fig4e_sender_precursor_associations.csv": ["ligand_display", "sender_cell_type"],
+    "Fig5b_in_vivo_response_bridge.csv": ["perturbation_display", "endpoint_display", "signature_scope"],
+    "Fig5c_IFNGR1_cohort_directionality.csv": ["signature_display", "endpoint_display", "statistical_unit"],
+    "Fig5d_direct_KO_triangulation.csv": ["perturbation_display", "interpretation_scope"],
+    "Fig5e_virtual_downstream_control.csv": ["virtual_perturbation", "endpoint_display", "evidence_role"],
+    "Fig6a_screen_cascade.csv": ["perturbation_cell_line", "screen_role"],
+    "Fig6b_NIBR_profile_screen.csv": ["perturbation_cell_line", "evidence_role"],
+    "Fig6g_developability_gate.csv": ["display_value", "assessment"],
 }
 
 
@@ -211,8 +220,8 @@ def audit_source_data(root: Path, rows: list[dict[str, object]]) -> None:
 
     semantic_checks = [
         (
-            "source_semantics::Fig1d confidence",
-            frames["Fig1d_module_progression.csv"].annotation_role.str.contains("not a discrete cell type").all(),
+            "source_semantics::Fig1c confidence",
+            frames["Fig1c_module_progression.csv"].annotation_role.str.contains("not a discrete cell type").all(),
             "BAM non-core/core labels are confidence definitions",
         ),
         (
@@ -228,48 +237,48 @@ def audit_source_data(root: Path, rows: list[dict[str, object]]) -> None:
             "LAM endpoints are program projections",
         ),
         (
-            "source_semantics::Fig3 receptor labels",
+            "source_semantics::Fig4 receptor labels",
             {"IFNGR1/2", "TNFRSF1A/B", "CSF2RA/B"}.issubset(
-                set(frames["Fig3b_decoupled_receiver_regulator_meta.csv"].display_label)
+                set(frames["Fig4b_decoupled_receiver_regulator_meta.csv"].display_label)
             ),
             "ligand-family keys are displayed as receptor complexes",
         ),
         (
-            "source_semantics::Fig3 trajectory windows",
-            frames["Fig3c_regulator_trajectory_dynamics.csv"].contrast_definition.str.contains("pseudotime").all(),
+            "source_semantics::Fig4 trajectory windows",
+            frames["Fig4c_regulator_trajectory_dynamics.csv"].contrast_definition.str.contains("pseudotime").all(),
             "every trajectory contrast carries an explicit pseudotime definition",
         ),
         (
-            "source_semantics::Fig4 in vivo response",
-            frames["Fig4b_in_vivo_response_bridge.csv"].signature_scope.eq(
+            "source_semantics::Fig5 in vivo response",
+            frames["Fig5b_in_vivo_response_bridge.csv"].signature_scope.eq(
                 "author-defined in vivo cytokine-response signature"
             ).all(),
             "all primary bridge rows identify the in vivo response-signature scope",
         ),
         (
-            "source_semantics::Fig4 direct KO",
-            frames["Fig4d_direct_KO_triangulation.csv"].interpretation_scope.eq(
+            "source_semantics::Fig5 direct KO",
+            frames["Fig5d_direct_KO_triangulation.csv"].interpretation_scope.eq(
                 "direct-KO sensitivity projection"
             ).all(),
             "direct KO panel is labelled as a sensitivity projection",
         ),
         (
-            "source_semantics::Fig4 virtual",
-            frames["Fig4e_virtual_downstream_control.csv"].virtual_perturbation.eq("KO").all(),
+            "source_semantics::Fig5 virtual",
+            frames["Fig5e_virtual_downstream_control.csv"].virtual_perturbation.eq("KO").all(),
             "downstream IRF1/STAT1 controls remain explicitly virtual",
         ),
         (
-            "source_semantics::Fig5 U2OS",
-            frames["Fig5b_NIBR_profile_screen.csv"].perturbation_cell_line.eq("U2OS").all(),
+            "source_semantics::Fig6 U2OS",
+            frames["Fig6b_NIBR_profile_screen.csv"].perturbation_cell_line.eq("U2OS").all(),
             "all screening profiles identify the U2OS system",
         ),
         (
-            "source_semantics::Fig5 unresolved target",
+            "source_semantics::Fig6 unresolved target",
             (
-                frames["Fig5g_developability_gate.csv"].loc[
+                frames["Fig6g_developability_gate.csv"].loc[
                     lambda x: x.metric.eq("Target attribution"), "display_value"
                 ].eq("unresolved").all()
-                and frames["Fig5g_developability_gate.csv"].metric.eq("Target attribution").any()
+                and frames["Fig6g_developability_gate.csv"].metric.eq("Target attribution").any()
             ),
             "BX-912 target attribution is unresolved",
         ),

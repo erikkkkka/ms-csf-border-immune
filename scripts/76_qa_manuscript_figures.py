@@ -18,11 +18,12 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 
 FIGURES = {
-    "Figure_1_CSF_monocyte_BAM_continuum": (183, 140),
+    "Figure_1_CSF_monocyte_BAM_continuum": (518.74 * 25.4 / 72, 350 * 25.4 / 72),
     "Figure_2_MS_inflammatory_adaptation_decoupling": (183, 150),
-    "Figure_3_receiver_regulatory_analysis": (183, 172),
-    "Figure_4_in_vivo_CRISPR_directional_control": (183, 150),
-    "Figure_5_transition_aware_chemical_probe": (183, 190),
+    "Figure_3_Independent_CSF_and_IFNGR1": (7.2 * 25.4, 8.2 * 25.4),
+    "Figure_4_receiver_regulatory_analysis": (183, 172),
+    "Figure_5_in_vivo_CRISPR_directional_control": (183, 150),
+    "Figure_6_transition_aware_chemical_probe": (183, 190),
 }
 
 FORMATS = {
@@ -32,7 +33,7 @@ FORMATS = {
     ".pdf": None,
 }
 
-EXPECTED_SOURCE_COUNTS = {1: 4, 2: 4, 3: 4, 4: 4, 5: 9}
+EXPECTED_SOURCE_COUNTS = {1: 4, 2: 4, 4: 4, 5: 4, 6: 9}
 PIXEL_DIMENSION_TOLERANCE = 5
 
 
@@ -212,7 +213,7 @@ def main() -> None:
 
     source_counts = source_manifest.groupby("figure").size().to_dict()
     source_count_pass = source_counts == EXPECTED_SOURCE_COUNTS
-    export_pass = bool(export_qa.passed.all()) and len(export_qa) == 20
+    export_pass = bool(export_qa.passed.all()) and len(export_qa) == len(FIGURES) * len(FORMATS)
     source_pass = bool(source_manifest.passed.all()) and source_count_pass
     annotation_pass = bool(
         len(annotation_qa) > 0
@@ -241,7 +242,7 @@ Audited at: {audited_at}
 **{'PASS' if overall_pass else 'FAIL'}**
 
 - Export files: {int(export_qa.passed.sum())}/{len(export_qa)} passed.
-- Expected format set: five figures x SVG, PDF, PNG and TIFF.
+- Expected format set: six figures x SVG, PDF, PNG and TIFF.
 - Source-data tables: {int(source_manifest.passed.sum())}/{len(source_manifest)} passed.
 - Source-data coverage: {source_summary}.
 - Annotation semantics: {int(annotation_qa.passed.astype(bool).sum()) if len(annotation_qa) and 'passed' in annotation_qa else 0}/{len(annotation_qa)} passed.

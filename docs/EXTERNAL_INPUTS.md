@@ -1,6 +1,6 @@
 # External inputs
 
-Figure regeneration uses the released result tables, two attributed ChEMBL
+Figures 1–6 and S1–S9 use the released result tables, two attributed ChEMBL
 snapshots, and the GSE138266 continuum and GSE328265 two-axis AnnData objects from
 the processed-data assets. It does not require downloading raw sequencing data or
 external databases.
@@ -27,7 +27,7 @@ targeted NIBR CSVs are derived from remote parquet queries and must be generated
 the source-query code rather than downloaded from the parquet URL under a CSV name.
 
 The historical ledger also includes earlier exploratory proteomics and LTA4H
-resources that are not required for the final Figures 1-5. Scripts `01` through `50`
+resources that are not required for Figures 1–6. Scripts `01` through `50`
 preserve these exploratory analyses. The downstream workflow starts at the released
 cleaned objects and is listed in `release_tools/reproduce_public.py --list`.
 

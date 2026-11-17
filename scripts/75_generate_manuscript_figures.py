@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the five frozen-evidence manuscript figures using Python only."""
+"""Generate the six manuscript figures from the analysis results."""
 
 from __future__ import annotations
 
@@ -16,6 +16,9 @@ from matplotlib import patches
 from matplotlib.lines import Line2D
 import numpy as np
 import pandas as pd
+
+from plot_csf_continuum import build_figure as build_csf_continuum
+from plot_independent_csf_and_ifngr1 import build_figure as build_independent_csf
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,7 +70,7 @@ STATE_LABELS = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=ROOT)
-    parser.add_argument("--figures", nargs="*", type=int, default=[1, 2, 3, 4, 5])
+    parser.add_argument("--figures", nargs="*", type=int, default=[1, 2, 3, 4, 5, 6])
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--source-dir", type=Path)
     parser.add_argument("--qa-dir", type=Path)
@@ -268,9 +271,10 @@ def layout_metrics(fig: plt.Figure) -> dict:
     return {"text_artists": rows, "outside_canvas": outside}
 
 
-def save_figure(fig: plt.Figure, output_dir: Path, name: str) -> None:
+def save_figure(fig: plt.Figure, output_dir: Path, name: str, *, adjust_layout: bool = True) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    prepare_layout(fig)
+    if adjust_layout:
+        prepare_layout(fig)
     if LAYOUT_QA_DIR is not None:
         LAYOUT_QA_DIR.mkdir(parents=True, exist_ok=True)
         (LAYOUT_QA_DIR / f"{name}.json").write_text(json.dumps(layout_metrics(fig), indent=2))
@@ -298,44 +302,6 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
     summary = pd.read_csv(root / "results/trajectory/continuum_state_summary.csv")
     jackknife = pd.read_csv(root / "results/trajectory/trajectory_donor_jackknife.csv")
 
-    fig = plt.figure(figsize=(183 * MM, 140 * MM))
-    gs = fig.add_gridspec(
-        2, 12, height_ratios=[1.08, 1.0], hspace=0.38, wspace=1.0,
-        left=0.065, right=0.955, bottom=0.13, top=0.91,
-    )
-    ax_a = fig.add_subplot(gs[0, 0:5])
-    ax_b = fig.add_subplot(gs[0, 5:8])
-    ax_c = fig.add_subplot(gs[0, 8:12])
-    ax_d = fig.add_subplot(gs[1, 0:7])
-    ax_e = fig.add_subplot(gs[1, 8:12])
-
-    ax_a.set_axis_off()
-    add_panel_label(ax_a, "a", x=-0.10, y=1.01)
-    ax_a.set_title("Study design", loc="left", fontweight="bold")
-    cohort_info = topology.set_index("dataset")
-    boxes = [
-        ("GSE138266", "PBMC + CSF"),
-        ("GSE194078", "PBMC + CSF"),
-        ("GSE286068", "CSF"),
-    ]
-    for index, (dataset, role) in enumerate(boxes):
-        row = cohort_info.loc[dataset]
-        x = 0.01 + index * 0.33
-        text = f"{dataset}\n{role}"
-        draw_box(ax_a, (x, 0.63), 0.29, 0.24, text, "#EEF2F5", fontsize=5.7)
-        arrow_axes(ax_a, (x + 0.145, 0.63), (0.50, 0.48))
-    draw_box(
-        ax_a, (0.27, 0.30), 0.46, 0.18,
-        "donor-aware\nconsensus trajectory",
-        COLORS["entry_light"], fontsize=6.2, weight="bold",
-    )
-    arrow_axes(ax_a, (0.50, 0.30), (0.50, 0.20), COLORS["entry"])
-    draw_box(
-        ax_a, (0.02, 0.03), 0.91, 0.16,
-        "PBMC monocyte  ->  CSF monocyte\n->  C1Q/APOE-high BAM-like pole",
-        COLORS["terminal_light"], fontsize=5.5,
-    )
-
     paired = inventory[inventory.dataset.isin(["GSE138266", "GSE194078"])].copy()
     totals = paired.groupby(["dataset", "tissue"], as_index=False).n_cells.sum()
     bam = paired[paired.fine_apc_label.eq("BAM_like_candidate")][
@@ -343,20 +309,7 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
     ].rename(columns={"n_cells": "n_BAM_like"})
     restriction = totals.merge(bam, on=["dataset", "tissue"], how="left").fillna(0)
     restriction["BAM_like_fraction"] = restriction.n_BAM_like / restriction.n_cells
-    export_source(restriction, source, "Fig1b_BAM_tissue_restriction")
-    for idx, dataset in enumerate(["GSE138266", "GSE194078"]):
-        sub = restriction[restriction.dataset.eq(dataset)].set_index("tissue")
-        y = 100 * sub.loc[["PBMC", "CSF"], "BAM_like_fraction"].to_numpy()
-        color = [COLORS["entry"], COLORS["terminal"]][idx]
-        ax_b.plot([0, 1], y, color=color, lw=1.25, marker="o", ms=4.2, zorder=3)
-        ax_b.text(1.04, y[1], dataset, fontsize=5.7, color=color, va="center")
-    ax_b.set_xticks([0, 1], ["PBMC", "CSF"])
-    ax_b.set_ylabel("BAM-like cells among APCs (%)")
-    ax_b.set_title("Paired-cohort CSF restriction", loc="left", fontweight="bold")
-    ax_b.set_xlim(-0.15, 1.48)
-    ax_b.set_ylim(bottom=-1)
-    add_panel_label(ax_b, "b")
-    clean_axis(ax_b)
+    export_source(restriction, source, "Fig1a_BAM_tissue_restriction")
 
     h5_path = root / "results/trajectory/continuum_objects/GSE138266_monocyte_BAM_continuum.h5ad"
     umap_obs, umap = read_h5_obs(
@@ -377,48 +330,10 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
     umap_frame.loc[monocyte_root[branch], "display_anchor"] = "PBMC monocyte root"
     umap_frame.loc[csf_entry[branch], "display_anchor"] = "CSF monocyte entry"
     umap_frame.loc[bam_reference[branch], "display_anchor"] = "C1Q/APOE-high BAM-like pole"
-    export_source(umap_frame, source, "Fig1c_representative_continuum_UMAP")
-    trajectory_cmap = mpl.colors.LinearSegmentedColormap.from_list(
-        "trajectory", [COLORS["entry"], COLORS["transition"], COLORS["terminal"]]
-    )
-    draw_order = np.argsort(umap_frame.consensus_pseudotime.to_numpy(float))
-    scatter = ax_c.scatter(
-        umap_frame.UMAP1.to_numpy()[draw_order],
-        umap_frame.UMAP2.to_numpy()[draw_order],
-        c=umap_frame.consensus_pseudotime.to_numpy(float)[draw_order],
-        cmap=trajectory_cmap, vmin=0, vmax=1, s=1.7, alpha=0.58,
-        linewidths=0, rasterized=True,
-    )
-    anchor_specs = {
-        "PBMC monocyte root": (-8, 20, "right"),
-        "CSF monocyte entry": (0, 23, "center"),
-        "C1Q/APOE-high BAM-like pole": (-3, -25, "center"),
-    }
-    for label, (dx, dy, align) in anchor_specs.items():
-        selected = umap_frame.display_anchor.eq(label)
-        center = np.nanmedian(
-            umap_frame.loc[selected, ["UMAP1", "UMAP2"]].to_numpy(), axis=0
-        )
-        ax_c.annotate(
-            label, xy=center, xytext=(dx, dy), textcoords="offset points",
-            fontsize=5.2, fontweight="bold", ha=align, va="center",
-            color=COLORS["ink"],
-            bbox=dict(facecolor="white", edgecolor="none", alpha=0.80, pad=0.8),
-            arrowprops=dict(arrowstyle="-", lw=0.55, color=COLORS["grey"]),
-        )
-    cbar = fig.colorbar(scatter, ax=ax_c, fraction=0.035, pad=0.015)
-    cbar.ax.set_title("Pseudotime", fontsize=5.3, pad=3)
-    cbar.set_ticks([0, 0.5, 1])
-    cbar.ax.tick_params(labelsize=5.2, length=2)
-    ax_c.set_xticks([])
-    ax_c.set_yticks([])
-    for spine in ax_c.spines.values():
-        spine.set_visible(False)
-    ax_c.set_title("Consensus root-to-BAM manifold", loc="left", fontweight="bold")
-    add_panel_label(ax_c, "c", x=-0.07)
+    export_source(umap_frame, source, "Fig1b_representative_continuum_UMAP")
 
     stages = ["CSF_classical_monocyte", "CSF_BAM_intermediate", "CSF_BAM_terminal"]
-    stage_labels = ["CSF entry", "BAM reference\nnon-core", "High-confidence\nBAM core"]
+    stage_labels = ["CSF entry", "BAM-like non-core", "BAM-like core"]
     modules = {
         "median_module_monocyte_entry": ("Monocyte entry", COLORS["entry"]),
         "median_module_CSF1_GMCSF_response": ("GM-CSF response", COLORS["transition"]),
@@ -441,24 +356,7 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
                     "scaled_median": value, "raw_median": raw,
                 })
     scaled_frame = pd.DataFrame(scaled_rows)
-    export_source(scaled_frame, source, "Fig1d_module_progression")
-    x = np.arange(3)
-    label_offsets = {"Monocyte entry": 0.0, "GM-CSF response": 0.03, "BAM identity": -0.03}
-    for module, (label, color) in modules.items():
-        sub = scaled_frame[scaled_frame.module.eq(label)]
-        matrix = sub.pivot(index="dataset", columns="stage", values="scaled_median").reindex(columns=stages)
-        for values in matrix.to_numpy():
-            ax_d.plot(x, values, color=color, lw=0.55, alpha=0.22)
-        mean = matrix.mean(axis=0).to_numpy()
-        ax_d.plot(x, mean, color=color, lw=1.7, marker="o", ms=3.5, label=label)
-        ax_d.text(2.08, mean[-1] + label_offsets[label], label, color=color, fontsize=5.7, va="center")
-    ax_d.set_xticks(x, stage_labels)
-    ax_d.set_xlim(-0.12, 2.75)
-    ax_d.set_ylim(-0.08, 1.08)
-    ax_d.set_ylabel("Within-cohort scaled median")
-    ax_d.set_title("Programs across BAM annotation confidence", loc="left", fontweight="bold")
-    add_panel_label(ax_d, "d", x=-0.08)
-    clean_axis(ax_d)
+    export_source(scaled_frame, source, "Fig1c_module_progression")
 
     jk = jackknife[jackknife.representation.eq("primary")]
     multiroot = pd.read_csv(root / "results/trajectory/full_multiroot_endpoint_auc.csv")
@@ -475,22 +373,10 @@ def figure_1(root: Path, output: Path, source: Path) -> None:
             "full_score_column": "dpt_multiroot_primary",
         })
     robust = pd.DataFrame(robustness_rows)
-    export_source(robust, source, "Fig1e_trajectory_robustness")
-    y = np.arange(len(robust))[::-1]
-    for yi, row in zip(y, robust.itertuples()):
-        ax_e.plot([row.jackknife_min, row.jackknife_max], [yi, yi], color=COLORS["light_grey"], lw=3)
-        ax_e.scatter(row.jackknife_median, yi, s=18, color=COLORS["entry"], zorder=3, label="donor jackknife" if yi == y[0] else None)
-        ax_e.scatter(row.full_auc, yi, s=24, marker="D", color=COLORS["ink"], zorder=4, label="all donors" if yi == y[0] else None)
-    ax_e.axvline(0.5, color=COLORS["grey"], ls="--", lw=0.7)
-    ax_e.set_yticks(y, robust.dataset)
-    ax_e.set_xlabel("High-confidence BAM endpoint versus root AUC")
-    ax_e.set_xlim(0.45, 1.02)
-    ax_e.set_title("Endpoint topology is donor-robust", loc="left", fontweight="bold")
-    ax_e.legend(loc="lower right", handletextpad=0.4)
-    add_panel_label(ax_e, "e", x=-0.16)
-    clean_axis(ax_e)
+    export_source(robust, source, "Fig1d_trajectory_robustness")
 
-    save_figure(fig, output, "Figure_1_CSF_monocyte_BAM_continuum")
+    fig = build_csf_continuum(restriction, umap_frame, scaled_frame, robust)
+    save_figure(fig, output, "Figure_1_CSF_monocyte_BAM_continuum", adjust_layout=False)
 
 
 def figure_2(root: Path, output: Path, source: Path) -> None:
@@ -692,6 +578,11 @@ def figure_2(root: Path, output: Path, source: Path) -> None:
 
 
 def figure_3(root: Path, output: Path, source: Path) -> None:
+    fig = build_independent_csf(root)
+    save_figure(fig, output, "Figure_3_Independent_CSF_and_IFNGR1", adjust_layout=False)
+
+
+def figure_4(root: Path, output: Path, source: Path) -> None:
     meta = pd.read_csv(root / "results/niche_regulator/receiver_state_delta_meta.csv")
     circuits = pd.read_csv(root / "results/niche_regulator/receiver_side_circuit_ranking.csv")
     sender = pd.read_csv(root / "results/niche_regulator/sender_to_LAM_outcome_associations.csv")
@@ -770,7 +661,7 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
         "receiver receptor-complex expression" if feature_type == "receptor" else "regulator activity"
         for feature_type, _ in selected
     ]
-    export_source(selection, source, "Fig3b_decoupled_receiver_regulator_meta")
+    export_source(selection, source, "Fig4b_decoupled_receiver_regulator_meta")
     labels = selection.display_label.tolist()
     raw_labels = [item[1] for item in selected]
     values = selection.combined_z.to_numpy()
@@ -800,7 +691,7 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
     circuit_plot = circuits.sort_values("receiver_chain_score").copy()
     circuit_plot["circuit_display"] = circuit_plot.circuit.map(circuit_labels)
     circuit_plot["evidence_scope"] = "receiver-side ranking; sender association is non-significant"
-    export_source(circuit_plot, source, "Fig3d_receiver_circuit_ranking")
+    export_source(circuit_plot, source, "Fig4d_receiver_circuit_ranking")
     y_c = np.arange(len(circuit_plot))
     ax_d.barh(y_c, circuit_plot.receiver_chain_score, color=[COLORS["ms"] if value == "A" else COLORS["light_grey"] for value in circuit_plot.receiver_evidence_tier], edgecolor="none")
     ax_d.set_yticks(y_c, circuit_plot.circuit_display)
@@ -844,7 +735,7 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
     heat_source = heat.reset_index().melt(id_vars="feature_name", var_name="contrast", value_name="combined_z")
     heat_source["contrast_display"] = heat_source.contrast.map(contrast_labels)
     heat_source["contrast_definition"] = heat_source.contrast.map(contrast_definitions)
-    export_source(heat_source, source, "Fig3c_regulator_trajectory_dynamics")
+    export_source(heat_source, source, "Fig4c_regulator_trajectory_dynamics")
     image = ax_c.imshow(heat.to_numpy(), cmap="RdBu_r", vmin=-6, vmax=6, aspect="auto", interpolation="nearest")
     ax_c.set_yticks(np.arange(len(regulators)), regulators)
     ax_c.set_xticks(
@@ -874,7 +765,7 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
     pooled["ligand_display"] = pooled.ligand.map(ligand_labels).fillna(pooled.ligand)
     pooled["sender_cell_type"] = "CSF T cells"
     pooled = pooled.sort_values("correlation")
-    export_source(pooled, source, "Fig3e_sender_precursor_associations")
+    export_source(pooled, source, "Fig4e_sender_precursor_associations")
     y_s = np.arange(len(pooled))
     ax_e.axvline(0, color=COLORS["grey"], lw=0.7, ls="--")
     ax_e.scatter(pooled.correlation, y_s, s=24, color=COLORS["grey"], edgecolor="white", linewidth=0.4)
@@ -885,10 +776,10 @@ def figure_3(root: Path, output: Path, source: Path) -> None:
     add_panel_label(ax_e, "e", x=-0.66)
     clean_axis(ax_e)
 
-    save_figure(fig, output, "Figure_3_receiver_regulatory_analysis")
+    save_figure(fig, output, "Figure_4_receiver_regulatory_analysis")
 
 
-def figure_4(root: Path, output: Path, source: Path) -> None:
+def figure_5(root: Path, output: Path, source: Path) -> None:
     bridge_meta = pd.read_csv(root / "results/in_vivo_crispr_bridge/bridge_meta_analysis.csv")
     bridge_tests = pd.read_csv(root / "results/in_vivo_crispr_bridge/cohort_bridge_tests.csv")
     bridge_decisions = pd.read_csv(root / "results/in_vivo_crispr_bridge/primary_bridge_decisions.csv")
@@ -933,7 +824,7 @@ def figure_4(root: Path, output: Path, source: Path) -> None:
     published["endpoint_display"] = published.endpoint.map(dict(zip(endpoints, endpoint_labels)))
     published["signature_scope"] = "author-defined in vivo cytokine-response signature"
     published["endpoint_gene_holdout"] = True
-    export_source(published, source, "Fig4b_in_vivo_response_bridge")
+    export_source(published, source, "Fig5b_in_vivo_response_bridge")
     matrix = published.pivot(index="perturbation", columns="endpoint", values="combined_z").reindex(
         index=perturbations, columns=endpoints
     )
@@ -967,7 +858,7 @@ def figure_4(root: Path, output: Path, source: Path) -> None:
     })
     cohort["endpoint_display"] = "Decoupled minus other incomplete"
     cohort["statistical_unit"] = "donor"
-    export_source(cohort, source, "Fig4c_IFNGR1_cohort_directionality")
+    export_source(cohort, source, "Fig5c_IFNGR1_cohort_directionality")
     datasets = ["GSE138266", "GSE286068", "GSE328265"]
     y = np.arange(len(datasets))
     for signature_type, label, color, marker, offset in [
@@ -994,7 +885,7 @@ def figure_4(root: Path, output: Path, source: Path) -> None:
     direct["inflammatory_reversal_z"] = -direct.direct_ko_decoupled_z
     direct["differentiation_association_z"] = direct.direct_ko_pseudotime_z
     direct["interpretation_scope"] = "direct-KO sensitivity projection"
-    export_source(direct, source, "Fig4d_direct_KO_triangulation")
+    export_source(direct, source, "Fig5d_direct_KO_triangulation")
     point_colors = {
         "Ifngr1": COLORS["ms"], "Tnfrsf1a": COLORS["transition"],
         "Csf2ra": "#2B7A78", "Tgfbr1": COLORS["entry"],
@@ -1037,7 +928,7 @@ def figure_4(root: Path, output: Path, source: Path) -> None:
             "fdr": row.fdr_bh_veto_endpoints, "evidence_role": "harmful-direction veto",
         })
     virtual = pd.DataFrame(virtual_rows)
-    export_source(virtual, source, "Fig4e_virtual_downstream_control")
+    export_source(virtual, source, "Fig5e_virtual_downstream_control")
     categories = ["Axis 2\nsuppression", "Precursor\nreduction", "LAM2 harm\n(veto)"]
     x = np.arange(3)
     width = 0.32
@@ -1056,10 +947,10 @@ def figure_4(root: Path, output: Path, source: Path) -> None:
     add_panel_label(ax_e, "e", x=-0.19)
     clean_axis(ax_e)
 
-    save_figure(fig, output, "Figure_4_in_vivo_CRISPR_directional_control")
+    save_figure(fig, output, "Figure_5_in_vivo_CRISPR_directional_control")
 
 
-def figure_5(root: Path, output: Path, source: Path) -> None:
+def figure_6(root: Path, output: Path, source: Path) -> None:
     signature = pd.read_csv(root / "results/transition_aware_drug_screen/signatures/signature_build_summary.csv").iloc[0]
     profiles = pd.read_csv(root / "results/transition_aware_drug_screen/nibr_full_profiles/NIBR_transition_candidate_profile_scores.csv")
     compounds = pd.read_csv(root / "results/transition_aware_drug_screen/nibr_full_profiles/NIBR_transition_candidate_compound_summary.csv")
@@ -1103,7 +994,7 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
         "perturbation_cell_line": "U2OS", "profile_duration_h": 24,
         "screen_role": "phenotypic execution screen; not disease-cell efficacy",
     }])
-    export_source(cascade_source, source, "Fig5a_screen_cascade")
+    export_source(cascade_source, source, "Fig6a_screen_cascade")
 
     props = molecule["molecule_properties"]
     activity_rows = pd.DataFrame(activities)
@@ -1117,7 +1008,7 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
         {"metric": "Phenotypic assignment", "numeric_value": np.nan, "unit": "", "display_value": "phenotypic probe", "assessment": "non-therapeutic assignment"},
         {"metric": "Target attribution", "numeric_value": np.nan, "unit": "", "display_value": "unresolved", "assessment": "not PDPK1-confirmed"},
     ])
-    export_source(developability, source, "Fig5g_developability_gate")
+    export_source(developability, source, "Fig6g_developability_gate")
     ax_g.set_axis_off()
     add_panel_label(ax_g, "g", x=-0.10, y=1.04)
     ax_g.set_title("Developability and attribution gate", loc="left", fontweight="bold")
@@ -1136,7 +1027,7 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
     profiles["perturbation_cell_line"] = "U2OS"
     profiles["evidence_role"] = "phenotypic profile; not CSF myeloid efficacy"
     profiles["adaptation_floor"] = profiles[["lam2_adaptation_score", "trajectory_adaptation_score"]].min(axis=1)
-    export_source(profiles, source, "Fig5b_NIBR_profile_screen")
+    export_source(profiles, source, "Fig6b_NIBR_profile_screen")
     nonadvance = ~profiles.profile_advance.astype(bool)
     ax_b.scatter(
         profiles.loc[nonadvance, "lock_weighted_reversal_score"],
@@ -1167,7 +1058,7 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
 
     selected_drugs = ["BX-912", "GSK2334470", "AR-12", "BAG-956", "PDK1-AKT inhibitor"]
     dose = profiles[profiles.drug.isin(selected_drugs)].copy()
-    export_source(dose, source, "Fig5c_mechanism_matched_dose_profiles")
+    export_source(dose, source, "Fig6c_mechanism_matched_dose_profiles")
     for drug in selected_drugs:
         sub = dose[dose.drug.eq(drug)].sort_values("dose_um")
         if sub.empty:
@@ -1203,7 +1094,7 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
 
     target_order = ["STAT1", "IRF1", "GSK3B", "PDPK1", "AKT2", "JAK2", "TYK2", "AURKA", "CHEK1"]
     g = genetic[genetic.target.isin(target_order)].set_index("target").reindex(target_order).dropna(how="all").reset_index()
-    export_source(g, source, "Fig5d_genetic_target_deconvolution")
+    export_source(g, source, "Fig6d_genetic_target_deconvolution")
     y = np.arange(len(g))[::-1]
     fractions = g.n_libraries_advance / g.n_libraries_with_paired_signatures
     colors = [COLORS["terminal"] if "advance" in decision and "no_" not in decision else COLORS["light_grey"] for decision in g.decision]
@@ -1218,8 +1109,8 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
     top = neighbors.sort_values("compound_rank").head(8).copy()
     top["label"] = top.nibr_drug_name.str.replace(r" [A-Z]{2}-\d{2}-[A-Z]{2}\d{2}$", "", regex=True).str.slice(0, 18)
     pdpk = pdpk1_neighbors.sort_values("rank").head(5).copy()
-    export_source(top, source, "Fig5e_top_NIBR_neighbors")
-    export_source(pdpk, source, "Fig5e_PDPK1_NIBR_neighbors")
+    export_source(top, source, "Fig6e_top_NIBR_neighbors")
+    export_source(pdpk, source, "Fig6e_PDPK1_NIBR_neighbors")
     y_top = np.arange(len(top))[::-1]
     ax_e.barh(y_top, top.directional_cosine, color=COLORS["probe_light"], edgecolor="none")
     ax_e.set_yticks([])
@@ -1231,8 +1122,8 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
     add_panel_label(ax_e, "e", x=-0.12)
     clean_axis(ax_e)
 
-    export_source(redocking, source, "Fig5f_BX320_redocking_control")
-    export_source(robustness, source, "Fig5f_BX912_pose_robustness")
+    export_source(redocking, source, "Fig6f_BX320_redocking_control")
+    export_source(robustness, source, "Fig6f_BX912_pose_robustness")
     control_rmsd = float(redocking.loc[redocking.pose_rank.eq(1), "symmetry_aware_heavy_atom_rmsd_A"].iloc[0])
     ax_f.scatter(control_rmsd, 1, s=25, color=COLORS["terminal"], zorder=3)
     ax_f.plot([2, 2], [0.72, 1.28], color=COLORS["grey"], lw=0.7, ls="--")
@@ -1252,36 +1143,38 @@ def figure_5(root: Path, output: Path, source: Path) -> None:
     add_panel_label(ax_f, "f", x=-0.32)
     clean_axis(ax_f)
 
-    save_figure(fig, output, "Figure_5_transition_aware_chemical_probe")
+    save_figure(fig, output, "Figure_6_transition_aware_chemical_probe")
 
 
 def write_source_readme(source: Path) -> None:
     readme = """# Main figure source data
 
-Each CSV contains the exact rows or derived values used by the named manuscript panel.
+Each CSV contains the values used by the corresponding manuscript panel.
+Figure 3 uses the tables listed in `docs/INDEPENDENT_CSF_AND_IFNGR1.md`.
 Cell-level UMAP and state-plane tables preserve the frozen coordinates and scores without
 geometric transformation. Values are generated by `scripts/75_generate_manuscript_figures.py`.
 
 Statistical units:
 
-- Figures 1-3: cells are displayed for topology, but disease tests and meta-effects use donors.
-- Figure 4: donor-level in vivo CRISPR signature effects are combined across three
+- Figures 1, 2 and 4: cell-level displays accompany donor-level disease comparisons.
+- Figure 3: Ban comparisons use donors. THP-1 contrasts are paired within transductions.
+- Figure 5: donor-level in vivo CRISPR signature effects are combined across three
   inflammatory-state cohorts; trajectory/LAM endpoints additionally include the
   trajectory-only cohort. Virtual downstream effects use fitted whole-cohort GRNs,
   with effects aggregated by donor.
-- Figure 5: each point in the screen panel is one compound-dose perturbation profile.
+- Figure 6: each point in the screen panel is one compound-dose perturbation profile.
 
 Annotation scope:
 
 - `BAM-like` denotes a transcriptional pole or confidence-supported annotation, not
   demonstrated lineage origin.
-- Early, mid and late labels in Figure 3 are prespecified consensus-pseudotime windows,
+- Early, mid and late labels in Figure 4 are prespecified consensus-pseudotime windows,
   not discrete cell types.
 - LAM labels in Figure 2 are cross-species gene-program projections, not cell-identity
   assignments.
-- Receptor-KO labels in Figure 4 denote projected experimental mouse signatures;
+- Receptor-KO labels in Figure 5 denote projected experimental mouse signatures;
   IRF1/STAT1 KO labels explicitly denote virtual perturbations in inferred GRNs.
-- Figure 5 uses 24-hour U2OS perturbation profiles; BX-912 is assigned as a phenotypic
+- Figure 6 uses 24-hour U2OS perturbation profiles; BX-912 is assigned as a phenotypic
   probe with unresolved target attribution, not as a CNS-ready therapy.
 """
     (source / "README.md").write_text(readme)
@@ -1297,7 +1190,7 @@ def main() -> None:
     LAYOUT_QA_DIR = args.qa_dir
     source.mkdir(parents=True, exist_ok=True)
     configure_style()
-    functions = {1: figure_1, 2: figure_2, 3: figure_3, 4: figure_4, 5: figure_5}
+    functions = {1: figure_1, 2: figure_2, 3: figure_3, 4: figure_4, 5: figure_5, 6: figure_6}
     for number in args.figures:
         if number not in functions:
             raise ValueError(f"Unknown figure number: {number}")
